@@ -2,7 +2,7 @@
 
 (tl;dr please help improve the translation if you can!)
 
-In between the first (1887) and second (1893) editions of _Was sind und was sollen die Zahlen_ ([Wooster Woodruff Beman's 1901 English translation](https://www.gutenberg.org/ebooks/21016) of the second edition, called by him "The nature and meaning of numbers"), Dedekind wrote a short unpublished note in March 1889 that ultimately was only hinted at in the foreword to the second definition (I give Beman's translation):
+In between the first (1887) and second (1893) editions of _Was sind und was sollen die Zahlen_ ([Wooster Woodruff Beman's 1901 English translation](https://www.gutenberg.org/ebooks/21016) of the second edition, called by him "The nature and meaning of numbers"), Dedekind wrote a short unpublished note in March 1889 that ultimately was only hinted at in the foreword to the second edition (I give Beman's translation), as follows:
 
 
 > For the benefit of those who are interested in and understand the difficulties of such an
