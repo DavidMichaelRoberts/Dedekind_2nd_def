@@ -1,34 +1,72 @@
-% \documentclass[leqno]{article}
-\documentclass[leqno, hidelinks]{article}
+\documentclass[leqno,hidelinks,a4paper]{article}
+\usepackage[german,english]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{color,hyperref}
 \usepackage{enumerate}
-\usepackage{amsmath,amssymb}
-\usepackage{amsthm}% http://ctan.org/pkg/amsthm
-% \swapnumbers % Switch number/label style
+\usepackage{microtype}
 
+\definecolor{darkblue}{rgb}{0,0,.7}
+\definecolor{ultrav}{rgb}{0.5,0,1}
 
-\newtheoremstyle{thmnumfirst}
- {}%space above
- {}%space below
- {}%body font
- {}%Indent amount
- {\bfseries}%Theorem head font
- {:}%Punctuation after theorem head
- {.5em}%Space after theorem head
- {#2.#1~\thmnote{#3.}}%Theorem head spec
+\hypersetup{colorlinks,
+            breaklinks,
+            linkcolor=ultrav,
+            urlcolor=darkblue,
+            anchorcolor=darkblue,
+            citecolor=darkblue}
 
-% \theoremstyle{thmnumfirst}
+\newtheoremstyle{}
+        {}%space above
+        {}%space below
+        {}%body font
+        {}%Indent amount
+        {\bfseries}%Theorem head font
+        {}%Punctuation after theorem head
+        {.5em}%Space after theorem head
+        {#1.#2.~\thmnote{#3.}
+}%Theorem head spec
+\swapnumbers
+
 \theoremstyle{definition}
-\newtheorem{theorem}{Theorem}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem*{corollary}{Corollary}
-\newtheorem*{lemma}{Lemma}
 
-\usepackage{hyperref}
+\newtheorem{satz}{\protect\satzname}
+\newtheorem{deff}[satz]{\protect\deffname}
+\newtheorem*{zusatz}{\protect\zusatzname}
+\newtheorem*{hilfssatz}{\protect\hilfssatzname}
+
+\newcommand{\satzname}{}
+\newcommand{\deffname}{}
+\newcommand{\zusatzname}{}
+\newcommand{\hilfssatzname}{}
+
+\addto\captionsgerman{%
+    \renewcommand{\satzname}{\hspace{-4pt}.\ Satz}%
+    \renewcommand{\deffname}{\hspace{-4pt}.\ Definition}%
+    \renewcommand{\zusatzname}{Zusatz}%
+    \renewcommand{\hilfssatzname}{Hilfssatz}%
+}
+
+\addto\captionsenglish{%
+    \renewcommand{\satzname}{\hspace{-4pt}.\ Theorem}%
+    \renewcommand{\deffname}{\hspace{-4pt}.\ Definition}%
+    \renewcommand{\zusatzname}{Corollary}%
+    \renewcommand{\hilfssatzname}{Lemma}%
+}
+
+\newcommand\Beweis{\newline $ \phantom{'.'} \rhd \ $}%
+\newcommand\beweis{ $ \phantom{'.'} \rhd \ $}%
 
 % From https://narkive.com/P4sNM0k5:7.443.63
+\newcommand\TeilVon{\mathrel{\raisebox{0.45ex}{$\mathfrak{3}$}}}
 \newcommand\partof{\mathrel{\raisebox{0.45ex}{$\mathfrak{3}$}}}
 
+\pagestyle{myheadings}
+\markright{Dedekind, Second definition of the finite and infinite\hfill}
 
+% for bilingual version
+% \usepackage{paracol}
+% \usepackage[landscape, total={8in, 8in}]{geometry}
+% \usepackage{showframe}
 
 
 \begin{document}
@@ -56,22 +94,22 @@ and
 		\text{from } A' \partof A \text{ it follows that } A = S.
 \end{equation}
 
-\begin{theorem}\label{thm1}
+\begin{satz}\label{thm1}
 $S' = S$. Every element of $S$ is an image of (at least) one element $r$ of $S$. Because from \eqref{eq1} it follows $(S')' \partof S'$, hence by \eqref{eq2}, our theorem holds.
-\end{theorem}
+\end{satz}
 
 Every system $[s]$ consisting of a single element $s$ is finite because it has no proper part and is mapped into itself by the identity mapping.
 This case is excluded below, $S$ means a finite system that does not consist of a single element.
 
-\begin{theorem}\label{thm2}
+\begin{satz}\label{thm2}
 Every element $s$ is different from its image $s'$, in symbols: $s \neq s'$.
 Because if $s = s'$, then $[s]' = [s'] = [s] \partof [s]$, so according to \eqref{eq2} also $[s] = S$ in contradiction to our assumption about $S$.
-\end{theorem}
+\end{satz}
 
 \textbf{[451]}
 
 
-\begin{definition}\label{def3}
+\begin{deff}\label{def3}
 If $s$ is a certain element of $S$, then $H_s$ shall be used to denote any part of $S$ that satisfies the following two conditions:
 \begin{enumerate}[I.]
 \item $s$ is element of $H_s$, so $[s] \partof H_s$, also
@@ -80,88 +118,88 @@ If $s$ is a certain element of $S$, then $H_s$ shall be used to denote any part 
 \]
 \item If $h$ is an element of $H_s$ different from $s$, then $h'$ is also an element of $H_s$; So if $H \partof H_s$, but $s$ is not contained in H, then $H' \partof H_s$.
 \end{enumerate}
-\end{definition}
+\end{deff}
 
- \begin{theorem}\label{thm4}
- $S$ and $[s]$ are special systems $H_s$, and $[s]$ is the intersection [Durchschnitt] (the commonality Gemeinheit]\footnote{[\emph{Beman's 1901 translation is `community' ---DMR}]}) of all systems $H_s$ corresponding to the element s. Obvious.\end{theorem}
+ \begin{satz}\label{thm4}
+ $S$ and $[s]$ are special systems $H_s$, and $[s]$ is the intersection [Durchschnitt] (the commonality Gemeinheit\footnote{[\emph{Beman's 1901 translation is `community' ---DMR}]}) of all systems $H_s$ corresponding to the element s. Obvious.\end{satz}
 
-\begin{theorem}\label{thm5}
-$H_s = S$ or a proper part of $S$, depending on whether $s'$ lies in $H_s$ or not.--- For if $s'$ lies in $H_s$, then it follows from II in \ref{def3}. that $H'_s \partof H_s$, therefore by \eqref{eq2} that $H_s = S$; and vice versa, if $H_s = S$, then $s'$ also lies in $H_s$.\end{theorem}
+\begin{satz}\label{thm5}
+$H_s = S$ or a proper part of $S$, depending on whether $s'$ lies in $H_s$ or not.--- For if $s'$ lies in $H_s$, then it follows from II in \ref{def3}. that $H'_s \partof H_s$, therefore by \eqref{eq2} that $H_s = S$; and vice versa, if $H_s = S$, then $s'$ also lies in $H_s$.\end{satz}
 
 
 
-\begin{theorem}\label{thm6}
+\begin{satz}\label{thm6}
  If $H_s$ is a proper part of $S$, then $s'$ is the only element of $H'_s$ that lies outside $H_s$.
 --- Because every element $k$ of $H'_s$ is image $h'$ of at least one element $h$ in $H_s$;
 If $k=h'$ is different from $s'$, then $h$ is also different from $s$, and consequently (according to II in \ref{def3}.) $k = h'$ lies in $H_s$, while the element $s'$ of $H'_s$ (according to \ref{thm5}.) lies outside $H_s$.
-\end{theorem}
+\end{satz}
 
-\begin{theorem}\label{thm7}
+\begin{satz}\label{thm7}
 Every system $H'_s$ is a system $H_{s'}$, that is (Definition \ref{def3}.):
 \begin{enumerate}[I'.]
 	\item $s'$ is element of $H'_s$
 	\item If $k$ is an element of $H'_s$ that is different from $s'$, then $k'$ also lies in $H'_s$.
-\end{enumerate}\end{theorem}
+\end{enumerate}\end{satz}
 
 The first follows from the fact that $s$ lies in $H_s$, the second from the fact that $k$ lies in $H_s$ (Theorem (\ref{thm6})).
 
-\begin{theorem}\label{thm8}
-If $A$, $B$, $C$ \ldots\ are special systems $H_s$ corresponding to the same $s$, then their intersection $H$ is also a system $H_s$.\end{theorem}
+\begin{satz}\label{thm8}
+If $A$, $B$, $C$ \ldots\ are special systems $H_s$ corresponding to the same $s$, then their intersection $H$ is also a system $H_s$.\end{satz}
 
 Because according to \ref{def3}.I. $s$ is a common element of $A, B, C, \ldots$, and therefore also an element of $H$.
 Furthermore, if $h$ is an element of $H$ that is different from $s$, then (according to \ref{def3}.II.) the image $h'$ is an element of $A$, of $B$, of $C$, \ldots, and therefore also of $H$.
 $H$ therefore fulfills the two conditions I, II in \ref{def3}.\ that are characteristic of every $H_s$.
 
-\begin{definition}\label{def9}
+\begin{deff}\label{def9}
 If $a$, $b$ are certain elements of $S$, then the symbol $ab$ (\emph{segment} [Strecke] $ab$) should mean the intersection [Durchschnitt] of all those systems $H_b$  which (such as $S$) contain the element $a$.
-\end{definition}
+\end{deff}
 
 \noindent \textbf{[452]}
 
-\begin{theorem}\label{thm10}
+\begin{satz}\label{thm10}
 $a$ is an element of ab, i.e. $[a] \partof ab$. Because $ab$ is the intersection of all systems $H_b$ in which $a$ lies. - (a is the \emph{start} [Anfang] of ab.)
-\end{theorem}
+\end{satz}
 
-\begin{theorem}\label{thm11}
+\begin{satz}\label{thm11}
 $ab$ is a system $H_b$, i.e. $[b] \partof ab$, and if $s$ is an element of $ab$ different from $b$, then $[s'] \partof ab$.
 --- This follows from \ref{thm8}. --- So $b$ is an element (the \emph{end} [Ende]) of $ab$. If $H \partof ab$ but $b$ is not contained in $H$, then $H' \partof ab$.
-\end{theorem}
+\end{satz}
 
-\begin{theorem}\label{thm12}
+\begin{satz}\label{thm12}
  From $[a] \partof H_b$, follows from $ab \partof H_b$.
 Immediate consequence of \ref{def9}.
-\end{theorem}
+\end{satz}
 
-\begin{theorem}\label{thm13}
+\begin{satz}\label{thm13}
 $aa = [a]$.
 This follows from \ref{thm4}., because $aa$ is the intersection of all $H_a$ that contain the element $a$ (according to \ref{def3}. I.).
-\end{theorem}
+\end{satz}
 
-\begin{theorem}\label{thm14}
+\begin{satz}\label{thm14}
 If $b'$ is an element of $ab$, then $ab = S$.
 --- This follows from \ref{thm11} and \ref{thm5}.
-\end{theorem}
+\end{satz}
 
 
-\begin{theorem}\label{thm15}
+\begin{satz}\label{thm15}
  $b' b = S$.
  --- This follows from \ref{thm14} and \ref{thm10}.
-\end{theorem}
+\end{satz}
 
-\begin{theorem}\label{thm16}
+\begin{satz}\label{thm16}
 If $c$ is an element of $ab$, then $cb \partof ab$.
 --- This follows from \ref{thm12}, because $ab$ is an $H_b$ (according to \ref{thm11}) which contains the element $c$.
-\end{theorem}
+\end{satz}
 
-\begin{theorem}\label{thm17}
+\begin{satz}\label{thm17}
 If $A + B$ means the system composed of $A, B$, then
 \[
 	a'b + b'a = S.
 \]
 For if $s$ is an element of $a'b$, then $s'$ is contained in $b'a$ or $a'b$, depending on $s = b$ or different from $b$ (according to \ref{thm10} or \ref{thm11} and \ref{def3}. II), and likewise if $s$ is an element of $b'a$, then $s'$ is contained in $a'b$ or $b'a$; therefore $(a'b + b'a)' \partof a'b + b'a$; This leads to the theorem according to \eqref{eq2}.
-\end{theorem}
+\end{satz}
 
-\begin{theorem}\label{thm18}
+\begin{satz}\label{thm18}
 If $a$ is different from $b$, then $ab = [a] + a'b$.
 For since $a$ is an element of $ab$ different from $b$, then $a'$ is an element of $ab$ (by \ref{thm10}, \ref{thm11}), and consequently (by \ref{thm16}) $a'b \partof ab$; since furthermore (by \ref{thm10}) we also have $[a] \partof ab$, therefore
 \[
@@ -172,13 +210,13 @@ Furthermore: every element $s$ of $[a] + a'b$ that is different from $b$ is eith
 	ab \partof [a] + a' b.
 \]
 The theorem follows from the comparison of both results.
-\end{theorem}
+\end{satz}
 
 
 \noindent \textbf{[453]}
 
-\begin{theorem}\label{thm19}
-If $a, b$ are different elements of $S$, then $a$ lies outside $a'b$, and $b$ lies outside $b'a$.\end{theorem}
+\begin{satz}\label{thm19}
+If $a, b$ are different elements of $S$, then $a$ lies outside $a'b$, and $b$ lies outside $b'a$.\end{satz}
 
 \begin{proof}
 If one assumes the opposite, that there is an element $a$ that is different from $b$ and lies in $a'b$, and that $A$ denotes the system of all such elements $a$, the following holds.
@@ -188,40 +226,40 @@ Therefore, the image $a'$ of every element $a$ of $A$ is also contained in $A$, 
 But since $A=S$ would follow from this, while $A$ does not contain the element $b$, our assumption is inadmissible, so the theorem is true, Qed.
 The second part follows by exchanging $a$ with $b$.\end{proof}
 
-\begin{theorem}\label{thm20}
+\begin{satz}\label{thm20}
 If $a$, $b$ are different, then the segments $a'b$, $b'a$ have no common element.
-\end{theorem}
+\end{satz}
 
 \begin{proof}
 If one assumes the opposite, that there is a common element $m$ of $a'b$, $b'a$, then it follows from the preceding Theorem \ref{thm19} that $m$ is different from $b$ and from $a$; therefore (according to \ref{thm11}) the image $m'$ must also be a common element of $a'b$ and $b'a$;
 Therefore, if M denotes the system of all such elements $m$, then $M' \partof M$, i.e. $M=S$. But this is impossible because $a$, $b$ are elements of $S$ but not elements of $M$. So our theorem is true.
 \end{proof}
 
-\begin{theorem}\label{thm21}
+\begin{satz}\label{thm21}
 If $a$, $b$ are different, then the images $a'$, $b'$ are also different.
-\end{theorem}
+\end{satz}
 
 \begin{proof}
 Otherwise the segments $a'b$, $b'a$ would have a common element $a'=b'$, because (according to \ref{thm10}) $a'$ is an element of $a'b$ and $b'$ is an element of $b'a$.
 \end{proof}
 
-\begin{theorem}\label{thm22}
+\begin{satz}\label{thm22}
 From $cb=S$ follows $c = b$.
-\end{theorem}
+\end{satz}
 
 \begin{proof}
 There is (according to \ref{thm1} and \ref{thm21}) in $S$ one and only one element $a$ which satisfies the condition $a'=c$, and therefore $a'b = S$, therefore $[a] \partof a'b$; Therefore (by \ref{thm19}) $a=b$, thus $c=b'$, Qed.
 \end{proof}
 
-\begin{theorem}\label{thm23}
+\begin{satz}\label{thm23}
 If $a$, $b$ are different, then every element of $S$ is contained in one and only one of the segments $a'b$, $b'a$. --- This follows from \ref{thm17} and \ref{thm20}.
-\end{theorem}
+\end{satz}
 
 \noindent \textbf{[454]}
 
-\begin{theorem}\label{thm24}
+\begin{satz}\label{thm24}
 If $a$, $b$, $c$ are different, then the segments $b'c$, $c'a$, $a'b$ have no common element, and the same applies to the segments $a'c$, $b'a$, $c'b$.
-\end{theorem}
+\end{satz}
 \begin{proof}
 Because the opposite assumption, that there is an element $m$ common to the segments $b'c$, $c'a$, $a'b$, leads to a contradiction.
 Let $M$ be the system of all such elements.
@@ -229,7 +267,7 @@ Since (according to \ref{thm19}) $a$ is not in $a'b$, $b$ is not in $b'c$, $c$ i
 But this is impossible because $M$ does not contain any of the elements $a$, $b$, $c$. So our theorem is true.
 --- The second part results from the first if one swaps $a$ with $b$, which does not change the assumption.\end{proof}
 
-\begin{corollary}
+\begin{zusatz}
 If you put (as in the following \ref{thm25}):
 \[
     A=c'b,\ B=a'c,\ C = b'a;\ A_1 = b'c,\ B_1 = c'a,\ C_1 = a'b,
@@ -241,9 +279,9 @@ S = A + A = B + B_1 = C +C_1;
 \[
 0=A-A_1=B-B_1=C-C_1.
 \]
-This also applies (according to \ref{thm20}) if at least two of the elements a, b, c are different.\end{corollary}
+This also applies (according to \ref{thm20}) if at least two of the elements a, b, c are different.\end{zusatz}
 
-\begin{theorem}\label{thm25}
+\begin{satz}\label{thm25}
 If $a$, $b$, $c$ are different, then one and only one of the following two cases occurs: Either
 \begin{multline}
 b'c=b'a+a'c,\quad c'a =c'b+b'a,\quad a'b = a'c+c'b \\
@@ -254,7 +292,7 @@ and each element of S lies in one, but only one, of the segments c'b, a'c, b'a; 
 c'b=c'a+a'b,\quad a'c=a'b+b'c,\quad b'a=b'c + c'a \\
 b'c=b'a-a'c,\quad c'a=c'b-b'a,\quad a'b=a'c-cb
 \end{multline}
-and each element of $S$ lies in one, but only one, of the segments $b'c$, $c'a$, $a'b$.\end{theorem}
+and each element of $S$ lies in one, but only one, of the segments $b'c$, $c'a$, $a'b$.\end{satz}
 
 \begin{proof}
 According to \ref{thm23}, $c$ lies either in $a'b$ or in $b'a$. We only consider the first case because the second arises from it by exchanging $a$ for $b$.
@@ -273,12 +311,12 @@ If now an element of, say, $b'c$ is neither in $b'a$ nor in $a'c$, then (accordi
 From $S=b'c+c'b$ we finally get $S=b'a+a'c+c'b$, which means our theorem is completely proven.
 \end{proof}
 
-\begin{corollary}
+\begin{zusatz}
 It can never be that $[a] \partof cb$ and $[b] \partof ca$ at the same time; because (according to \ref{thm18}) then $[a] \partof c'b$ and $[b] \partof c'a$ would have to be at the same time, which is impossible.
-\end{corollary}
-\begin{theorem}\label{thm26}
+\end{zusatz}
+\begin{satz}\label{thm26}
 From $ab=cb$ it follows that $a=c$, and if $ab=cd$ is a proper part of $S$, then $a=c$, $b = d$.
-\end{theorem}
+\end{satz}
 
 This follows from earlier theorems.
 Since (by \ref{thm10}) $c$ is in $cb$, and therefore also in $ab$, then if $a=b$, then $ab = [a]$, then must also $c=a$.
@@ -287,9 +325,9 @@ If one assumes that $c$ is different from $a$, then $c$ must lie in $a'b$, so (b
 But since $cb=ab$, this assumption is inadmissible, and therefore always $c=a$, Qed.
 Furthermore, if $ab=cd$ is a proper part of $S$, then $b=d$; If $b$ is different from $d$, then (by \ref{thm11}) $b'$ must also be in $cd$, and therefore also in $ab$; But then (by \ref{thm14}) would $ab = S$ violating the assumption, so $b=d$, therefore $ab=cb$, therefore also $a=c$, Qed.
 
-\begin{theorem}\label{thm27}
+\begin{satz}\label{thm27}
 Every system $H$ (defined in \ref{def3}.) is a segment [Strecke] $a's$ with the end $s$ and its beginning $a'$ completely determined.
-\end{theorem}
+\end{satz}
 \begin{proof}
 If $H_s= S$, then $H_s= s's$ (according to \ref{thm15}).
 But if $H_s$ is a proper part of $S$, then $A$ is the system of all elements of $S$ that lie outside $H_s$, so $S=A+H_s$.
@@ -301,28 +339,28 @@ Since neither $s$ nor $a$ lies in $H$, it follows from (that?) $H \partof H_s$, 
 But this is impossible because $s$ (and also $a$) lies outside $H$. Therefore certainly $H_s= a's$, and $A=s'a$, Qed.
 \end{proof}
 
-\begin{theorem}\label{thm28}
+\begin{satz}\label{thm28}
 The intersection of such segments $as, bs\ldots$ which have the same end $s$ is itself such a segment $hs$, and its beginning $h$ is completely determined.
-\end{theorem}
+\end{satz}
 
 For every such segment is (according to \ref{thm11}) a system $H_s$, and (according to \ref{thm8}) the same applies to its intersection, from which the theorem (according to \ref{thm27}) follows.
 
-\begin{corollary}[\textbf{to 28}]
+\begin{zusatz}[\textbf{to 28}]
 \label{cor_to_thm28}
 % Corollary to 28.
 The intersection of the segments $as, bs, cs \ldots$ is itself one of these segments. --- As a proof, let us first state the
-\end{corollary}
+\end{zusatz}
 
-\begin{lemma}
+\begin{hilfssatz}
 If $hs$ is a proper part of $as$, and $k$ is the element whose image is $k'=h$, then $hs$ is also a proper part of $ks$, and at the same time $ks \partof as$.
-\end{lemma}
+\end{hilfssatz}
 \noindent \textbf{[457]}
 
 \begin{proof}
 If $k=s$, then $hs=s's= S$, while $hs$ is a proper part of $as$, and therefore also of $S$. Since $k$ is different from $s$, then (by 18) $ks =[k]+ hs$, and (according to 19) $k$ is not contained in $hs$, so $hs$ is a proper part of $ks$.
 Since $hs$ is a proper part of as, let $as = M + hs$, where $M$ is the system of all elements $m$ of as that lie outside $hs$ and are therefore also different from $s$; from this follows $M' \partof as$, and since $M'$ obviously cannot be part of $M$ (because $M$ is not $= S$), there must be in $M$ an element $m$, the image $m'$ of which lies outside $M$, hence in hs, from which $m's \partof hs$ follows\footnote{[The proof is apparently incomplete. According to J. Cavaillès, a proof of the Lemma results directly from 25 by replacing the a, b, c there by a, k, s. The Corollary follows from 28 and the Lemma. E.N.]}.\end{proof}
 
-\begin{theorem}\label{thm29}
+\begin{satz}\label{thm29}
 If $T$ is a part of $S$, and $s$ is an element of $S$, then in $S$ there is always one and only one associated element $s_1$, which has the following two properties:
 \begin{enumerate}[1.]
 	\item If $a$ satisfies the condition $T \partof as$, then $s_1s \partof as$
@@ -334,7 +372,7 @@ and from this follow the two properties
 	\item $s_1$ is in $T$
 	\item The segment $ss_1$ contains no element of $T$ that is different from $s$ and $s_1$.
 \end{enumerate}
-\end{theorem}
+\end{satz}
 \begin{proof}
 Since $s's = S$, therefore $T \partof s's$ (by \ref{thm15}), there is at least one element $a$ that satisfies the condition $T \partof as$. If $A$ is the system of all such elements $a$, then (according to 28) the intersection of all the segments corresponding to them is a segment $s_1s$, where $s_1$ is a completely determined element of $S$.
 According to the concept of an intersection, $s_1$ has the property 1., but also property 2., because $T$ is a common part of all as, and therefore also part of their intersection $s_1s$. If $s_1=s$, then $s_1s=ss=[s]$, then it follows from 2. that $T$ consists of the single element $s$; and vice versa, if $s$ lies in $T$ and is the only element of $T$, then $T = [s] = ss$, so then according to 1. $s_1s \partof ss$, therefore $s_1 = s$; In this case, $s_1$ therefore has the property 3.\ and obviously also the property 4.\ But if $s_1$ is different from $s$, then (according to \ref{thm18}) $s_1s= [s_1]+(s_1)'s$.
@@ -347,9 +385,9 @@ We now consider the segment $ss_1$; if it has an element $u$ that is different f
 30. \emph{Mapping of $S$ into $T$}. Through \ref{thm29} a mapping $\psi$ of $S$ into $T$ is created, which is defined by the fact that each element $s$ of $S$ is sent by $\psi$ into the element $s_1$, which is defined there and (according to \ref{def3}.) lies in $T$.
 If $A$ is then any part of $S$, then $A_1$ should mean the associated image of $A$ (i.e. the system of images $a_1$ of all elements $a$ of $A$). So $S_1 \partof T$, also $T_1 \partof T$, i.e. $T$ is mapped by $\psi$ into itself.
 
-\begin{theorem}\label{thm31}
+\begin{satz}\label{thm31}
 This mapping of $T$ into itself is a similar one, i.e.: if $a, b$ are different elements of $T$, then their images $a_1, b_1$ are also different.
-\end{theorem}
+\end{satz}
 
 \begin{proof}
 By \ref{thm29}, $T \partof a_1a$ and $T \partof b_1b$. Since $a, b$ are elements of $T$, then $[a] \partof b_1b$, $[b] \partof a_1a$. If, although $a, b$ are different, $a_1 = b_1  \dot{=}
