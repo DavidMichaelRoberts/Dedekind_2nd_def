@@ -1,0 +1,1338 @@
+\documentclass[leqno,hidelinks]{article}
+\usepackage[german,english]{babel}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{color,hyperref}
+\usepackage{enumerate}
+\usepackage{microtype}
+
+\linespread{1.25}
+
+\definecolor{darkblue}{rgb}{0,0,.7}
+\definecolor{ultrav}{rgb}{0.5,0,1}
+
+\hypersetup{colorlinks,
+            breaklinks,
+            linkcolor=ultrav,
+            urlcolor=darkblue,
+            anchorcolor=darkblue,
+            citecolor=darkblue}
+
+\newtheoremstyle{}
+        {}%space above
+        {}%space below
+        {}%body font
+        {}%Indent amount
+        {\bfseries}%Theorem head font
+        {}%Punctuation after theorem head
+        {.5em}%Space after theorem head
+        {#1.#2.~\thmnote{#3.}
+}%Theorem head spec
+\swapnumbers
+
+\theoremstyle{definition}
+
+\newtheorem{satz}{\protect\satzname}
+\newtheorem{deff}[satz]{\protect\deffname}
+\newtheorem*{zusatz}{\protect\zusatzname}
+\newtheorem*{hilfssatz}{\protect\hilfssatzname}
+
+\newcommand{\satzname}{}
+\newcommand{\deffname}{}
+\newcommand{\zusatzname}{}
+\newcommand{\hilfssatzname}{}
+
+\addto\captionsgerman{%
+    \renewcommand{\satzname}{\hspace{-4pt}.\ Satz}%
+    \renewcommand{\deffname}{\hspace{-4pt}.\ Definition}%
+    \renewcommand{\zusatzname}{Zusatz}%
+    \renewcommand{\hilfssatzname}{Hilfssatz}%
+}
+
+\addto\captionsenglish{%
+    \renewcommand{\satzname}{\hspace{-4pt}.\ Theorem}%
+    \renewcommand{\deffname}{\hspace{-4pt}.\ Definition}%
+    \renewcommand{\zusatzname}{Corollary}%
+    \renewcommand{\hilfssatzname}{Lemma}%
+}
+
+\newcommand\Beweis{\medskip \newline $ \phantom{'.'} \rhd \ $}%
+\newcommand\beweis{ $ \phantom{'.'} \rhd \ $}%
+
+% From https://narkive.com/P4sNM0k5:7.443.63
+\newcommand\TeilVon{\mathrel{\raisebox{0.45ex}{$\mathfrak{3}$}}}
+\newcommand{\partof}{\subseteq}
+
+% \pagestyle{myheadings}
+% \markright{Dedekind, Second definition of the finite and infinite\hfill}
+
+% \usepackage[landscape, total={8in, 8in}]{geometry}
+\usepackage[total={8in, 10in}]{geometry}
+
+% \usepackage{showframe}
+% \setcounter{page}{451}
+
+% \newcommand{\sref}[1]{(\underline{\ref{#1}})}% with ()
+\newcommand{\sref}[1]{\underline{\ref{#1}}}% without ()
+
+\usepackage{paracol}
+
+\begin{document}
+\hypersetup{pageanchor=false}
+
+\title{Zweite Definition des Endlichen und Unendlichen.}
+\author{Richard Dedekind}
+\date{1889. 3. 9. \phantom{} [ 9th March 1889 ]}
+\maketitle
+
+\thispagestyle{empty}
+
+\begin{paracol}{2} % specify two columns...
+
+\selectlanguage{german}
+
+\noindent Zuerst veröffentlicht in der zweiten Auflage (1893) der Schrift
+\textit{\glqq Was sind und was sollen die Zahlen?\grqq{}} Seite XVII, in der Form:%
+
+\begin{quote}
+Ein System $S$ heißt endlich, wenn es sich so in sich selbst abbilden
+lässt, dass kein echter Teil von $S$ in sich selbst abgebildet
+wird; im entgegengesetzten Fall heißt $S$ ein unendliches System.
+\end{quote}
+
+Verfolgung dieser Definition eines endlichen Systems $S$
+\emph{ohne Benutzung der natürlichen Zahlen}.
+
+Es sei $\varphi$ eine Abbildung von $S$ in sich selbst, durch welche kein echter
+Teil von $S$ in sich selbst abgebildet wird.
+Kleine lateinische Buchstaben  $a, b \ldots z$ bedeuten immer \emph{Elemente} von
+$S$, große lateinische Buchstaben $A, B \ldots Z$ bedeuten \emph{Teile} von $S$;
+die durch $\varphi$ erzeugten Bilder von $a, A$ werden resp. mit $a', A'$ bezeichnet.
+
+Dass $A$ \emph{Teil von} $B$ ist, wird durch $A \TeilVon B$ ausgedrückt. Das aus den
+Elementen $a, b, c, \ldots $ bestehende System wird mit $[a, b, c \ldots]$ bezeichnet.
+
+Es ist also
+\begin{equation}\label{geq1}
+				S' \TeilVon S
+\end{equation}
+und% \marginpar{\textit{Die Definition des Endlichen.}}
+\begin{equation}\label{geq2}
+		\text{aus } A' \TeilVon A \text{ folgt } A = S.
+\end{equation}
+
+\begin{satz}\label{gthm1}$S' = S$.
+\Beweis
+Jedes Element von $S$ ist Bild von (mindestens) einem Element $r$ von $S$. Denn
+aus \eqref{geq1} folgt $(S')' \TeilVon S'$, also nach \eqref{geq2} unser Satz.
+\end{satz}
+Jedes aus einem einzigen Element $s$ bestehende System $[s]$ ist endlich, weil
+es keinen echten Teil besitzt und durch die identische Abbildung in sich selbst
+abgebildet wird. Dieser Fall wird im folgenden \emph{ausgeschlossen}, $S$ bedeutet
+ein endliches System, das \emph{nicht} aus einem einzigen Element besteht.
+
+\begin{satz}\label{gthm2}
+Jedes Element $s$ ist verschieden von seinem Bilde $s'$, in Zeichen: $s \neq s'$.
+\Beweis
+Denn wäre $s = s'$, so wäre $[s]' = [s'] = [s] \TeilVon [s]$, nach \eqref{geq2}
+auch $[s] = S$ im Widerspruch zu unserer Annahme über $S$.
+\end{satz}
+
+\newpage
+
+\begin{deff}\label{gdef3}
+Ist $s$ ein bestimmtes Element von $S$ so soll mit $H_s$ jeder solche Teil von
+$S$ bezeichnet werden, der den beiden folgenden Bedingungen genügt:
+\begin{enumerate}[I.]
+\item $s$ ist Element von $H_s$, also $[s] \TeilVon H_s$, also auch
+\[
+	[s] + H_s = H_s.
+\]
+\item Ist $h$ ein von $s$ verschiedenes Element von $H_s$, so ist auch $h'$
+Element von $H_s$; ist also $H \TeilVon H_s$, aber $s$ nicht in $H$ enthalten,
+so ist $H' \TeilVon H_s$.
+\end{enumerate}
+\end{deff}
+
+\begin{satz}\label{gthm4}
+$S$ und $[s]$ sind spezielle Systeme $H_s$, und $[s]$ ist der Durchschnitt
+(die Gemeinheit) aller dem Elemente $s$ entsprechenden Systeme $H_s$.
+\Beweis Offenbar.
+\end{satz}
+
+\begin{satz}\label{gthm5}
+$H_s = S$ oder \textit{echter} Teil von $S$, je nachdem $s'$ in $H_s$ liegt oder nicht.
+\Beweis
+Denn wenn $s'$ in $H_s$ liegt, so folgt aus (\sref{gdef3}{\color{ultrav}.II)},
+dass $H'_s \TeilVon H_s$, also nach \eqref{geq2}, dass $H_s = S$ ist; und umgekehrt,
+wenn $H_s = S$, so liegt auch $s'$ in $H_s$.
+\end{satz}
+
+\begin{satz}\label{gthm6}
+Ist $H_s$ \emph{echter} Teil von $S$, so ist $s'$ das einzige Element von $H'_s$,
+das außerhalb $H_s$ liegt.
+\Beweis
+Denn jedes Element $k$ von $H'_s$ ist Bild $h'$ von mindestens einem Element $h$
+in $H_s$; ist nun $k=h'$ verschieden von $s'$, so ist auch $h$ verschieden von $s$,
+und folglich (nach \sref{gdef3}{\color{ultrav}.II)} liegt $k = h'$ in $H_s$,
+während das Element $s'$ von $H'_s$ nach \sref{gthm5} außerhalb $H_s$ liegt.
+\end{satz}
+
+\begin{satz}\label{gthm7}
+Jedes System $H'_s$ ist ein System $H_{s'}$, das heißt (Definition \sref{gdef3}):
+\begin{enumerate}[I'.]
+    \item $s'$ ist Element von $H'_s$.
+    \item Ist $k$ ein von $s'$ verschiedenes Element von $H'_s$, so liegt auch $k'$ in $H'_s$.
+\end{enumerate}
+\beweis
+Das Erste folgt daraus, dass $s$ in $H_s$ liegt, das Zweite daraus,
+dass nach Satz \sref{gthm6} $k$ in $H_s$ liegt.
+\end{satz}
+
+\begin{satz}\label{gthm8}
+Sind $A$, $B$, $C$ \ldots\ spezielle, demselben $s$ entsprechende Systeme $H_s$,
+so ist auch ihr Durchschnitt $H$ ein System $H_s$.
+\Beweis
+Denn zufolge \sref{gdef3}{\color{ultrav}.I} ist $s$ gemeinsames Element von
+$A, B, C, \ldots$, also auch Element von $H$. Ist ferner $h$ ein von $s$
+verschiedenes Element von $H$, so ist zufolge \sref{gdef3}{\color{ultrav}.II} das
+Bild $h'$ Element von $A$, von $B$, von $C$, \ldots, also auch von $H$. Mithin
+erfüllt $H$ die beiden für jedes $H_s$ charakteristischen Bedingungen I, II
+in \sref{gdef3}.
+\end{satz}
+
+\begin{deff}\label{gdef9}
+Sind $a$, $b$ bestimmte Elemente von $S$, so soll das Symbol $ab$ den Durchschnitt
+aller derjenigen Systeme $H_b$ bedeuten (\emph{Strecke} $ab$), welche (wie z. B. $S$)
+das Element $a$ enthalten.
+\end{deff}
+
+\newpage
+
+\begin{satz}\label{gthm10}
+$a$ ist Element von $ab$, d. h. $[a] \TeilVon ab$.
+\Beweis
+Denn $ab$ ist der Durchschnitt von lauter solchen Systemen $H_b$ in denen $a$
+liegt. (a \emph{Anfang} von $ab$.)
+\end{satz}
+
+\begin{satz}\label{gthm11}
+$ab$ ist ein System $H_b$, d. h. $[b] \TeilVon ab$, und wenn $s$ ein von $b$
+verschiedenes Element von $ab$ ist, so ist $[s'] \TeilVon ab$.
+\Beweis
+Dies folgt aus \sref{gthm8}.
+\end{satz}
+
+Also $b$ Element (\emph{Ende}) von $ab$. Ist $H \TeilVon ab$, aber $b$ nicht in
+$H$ enthalten, so ist $H' \TeilVon ab$.
+
+\begin{satz}\label{gthm12}
+Aus $[a] \TeilVon H_b$ folgt $ab \TeilVon H_b$.
+\Beweis
+Unmittelbare Folge von \sref{gdef9}.
+\end{satz}
+
+\begin{satz}\label{gthm13}
+$aa = [a]$.
+\Beweis
+Dies folgt aus \sref{gthm4}, weil $aa$ der Durchschnitt aller $H_a$  ist, die
+ja alle das Element $a$ enthalten nach \sref{gdef3}.I
+\end{satz}
+
+\begin{satz}\label{gthm14}
+Ist $b'$ Element von $ab$, so ist $ab = S$.
+\Beweis
+Dies folgt aus \sref{gthm11} und \sref{gthm5}.
+\end{satz}
+
+\begin{satz}\label{gthm15}
+$b' b = S$.
+\Beweis
+Dies folgt aus \sref{gthm14} und \sref{gthm10}.
+\end{satz}
+
+\begin{satz}\label{gthm16}
+Ist $c$ Element von $ab$, so ist $cb \TeilVon ab$.
+\Beweis
+Dies folgt aus \sref{gthm12}, denn $ab$ ist ein $H_b$,
+(nach \sref{gthm11}), welches das Element $c$ enthält.
+\end{satz}
+
+\begin{satz}\label{gthm17}
+Bedeutet $A + B$ das aus $A, B$ zusammengesetzte System, so ist
+\[
+	a'b + b'a = S.
+\]%
+\beweis
+Denn wenn $s$ Element von $a'b$, so ist $s'$ in $b'a$ oder $a'b$
+enthalten, je nachdem $s = b$ oder verschieden von $b$ (zufolge \sref{gthm10}
+oder ~\sref{gthm11} und \sref{gdef3}.II), und ebenso, wenn $s$ Element von
+$b'a$, so ist $s'$ in $a'b$ oder $b'a$ enthalten; also ist
+$(a'b + b'a)' \TeilVon a'b + b'a$; hieraus folgt der Satz nach \eqref{geq2}.
+\end{satz}
+
+\begin{satz}\label{gthm18}
+Ist $a$ verschieden von $b$, so ist $ab = [a] + a'b$.
+\Beweis
+Denn da $a$ ein von $b$ verschiedenes Element von $ab$ ist, so ist $a'$ Element
+von $ab$ \sref{gthm10}, \sref{gthm11}, und folglich \sref{gthm16} ist
+$a'b \TeilVon ab$; da ferner \sref{gthm10} auch $[a] \TeilVon ab$, mithin
+\[
+	[a] + a'b \TeilVon ab.
+\]
+Ferner: jedes von $b$ verschiedene Element $s$ von $[a] + a'b$ ist entweder
+$= a$ oder ein von $b$ verschiedenes Element von $a'b$, in beiden Fällen ist
+$s'$ (nach \sref{gthm10}, \sref{gthm11}) Element von $a'b$, also auch von
+$[a]+ a'b$, und da \sref{gthm11} auch $[b] \TeilVon [a] + a'b$, so ist
+$[a] + a'b$ ein System $H_b$; da endlich auch $[a] \TeilVon [a] + a'b$, so ist
+\sref{gthm12} auch
+\[
+	ab \TeilVon [a] + a' b.
+\]
+Aus der Vergleichung beider Resultate folgt der Satz.
+\end{satz}
+
+\newpage
+
+\begin{satz}\label{gthm19}
+Sind $a, b$ verschiedene Elemente von $S$, so liegt $a$ außerhalb $a'b$,
+und $b$ liegt außerhalb $b'a$.
+\Beweis
+Nimmt man nämlich das Gegenteil an, es gebe ein von $b$ verschiedenes
+Element $a$, das in $a'b$ liegt, und bezeichnet mit $A$ das System aller
+solcher Elemente $a$, so ergibt sich folgendes.
+
+Setzt man $a' = s$, so liegt $a$ in $sb$, und da $a$ verschieden von $b$ ist, also
+(nach \sref{gthm13}) nicht in $bb$ liegt, so ist $s$ verschieden von $b$, und
+hieraus folgt (nach \sref{gthm18}), dass $sb = [s] + s'b$ ist. Da ferner $a$
+(nach \sref{gthm2}) verschieden von $s$ ist und in $sb$ liegt, so muss $a$ in
+$s'b$ liegen, und hieraus folgt (wieder nach \sref{gthm1}), dass auch $s$
+(als Bild $a'$) in $s'b$ liegt.
+
+Mithin ist das Bild $a'$ eines jeden Elementes $a$ von $A$ ebenfalls in $A$
+enthalten, also $A' \TeilVon A$. Da aber hieraus $a = S$ folgen würde, während
+doch $A$ das Element $b$ nicht enthält, so ist unsere Annahme unzulässig, also
+der Satz wahr, w.z.b.w.
+
+Der zweite Teil folgt durch Vertauschung von $a$ mit $b$.%
+\end{satz}
+
+\begin{satz}\label{gthm20}
+Sind $a, b$ verschieden, so haben die Strecken $a'b, b'a$ kein gemeinsames
+Element.
+\Beweis
+Nimmt man nämlich das Gegenteil an, es gebe ein gemeinsames Element
+$m\,$ von $a'b\,$, $b'a\,$, so folgt aus dem vorhergehenden Satz
+\sref{gthm19}, dass $m$ verschieden von $b$ und von $a$ ist; mithin muss
+\sref{gthm11} das Bild $m'$ ebenfalls gemeinsames Element von $a'b$ und $b'a$ sein.
+
+Bezeichnet man daher mit $M$ das System aller solcher Elemente $m$, so ist
+$M' \TeilVon M$, also $M = S$. Dies ist aber unmöglich, weil $a, b$ Elemente von
+$S$, aber nicht Elemente von $M$ sind. Also ist unser Satz wahr.
+\end{satz}
+
+\begin{satz}\label{gthm21}
+Sind $a, b$ verschieden, so sind auch die Bilder $a', b'$ verschieden.
+\Beweis
+Denn sonst hätten die Strecken $a'b, b'a$ ein gemeinsames Element $a' = b'$, weil
+$a'$ (nach \sref{thm10}) Element von $a'b$ und $b'$ Element von $b'a$ ist.
+\end{satz}
+
+\begin{satz}\label{gthm22}
+Aus $cb = S$ folgt $c = b'$.
+\Beweis
+Es gibt (nach \sref{thm1} und \sref{thm21}) in $S$ ein und nur ein Element $a$,
+welches der Bedingung $a' = c$ genügt, und es ist also $a'b = S$, mithin
+$[a] \TeilVon a'b$; es muss daher (\sref{gthm19}) $a = b$, also $c = b'$ sein, w.z.b.w.
+\end{satz}
+
+\begin{satz}\label{gthm23}
+Sind $a, b$ verschieden, so ist jedes Element von $S$ in einer und nur einer
+der Strecken $a'b, b'a$ enthalten.
+\Beweis
+Dies folgt aus \sref{thm17} und \sref{thm20}.
+\end{satz}
+
+\begin{satz}\label{gthm24}
+Sind $a,\, b,\, c$ verschieden, so haben die Strecken $b'c,\, c'a$, $a'b$ kein
+gemeinsames Element, und dasselbe gilt von den Strecken $a'c,\, b'a,\, c'b$.
+\Beweis
+Denn die gegenteilige Annahme, es gebe ein den Strecken $b'c,\, c'a,\, a'b$
+gemeinsames Element $m$, führt zu einem Widerspruch. Es sei $M$ das System aller
+solcher Elemente. Da (nach \sref{gthm19}) $a$ nicht in $a'b$, $ b$ nicht in
+$b'c$, $c$ nicht in $c'a$ liegt, so ist $m$ verschieden von $c, a, b$, und folglich
+(\sref{thm11}) ist $m'$ ebenfalls gemeinsames Element von $b'c,\, c'a,\, a'b$,
+also Element von $M$.
+
+Mithin ist $M' \TeilVon M$, also $M = S$. Dies ist aber unmöglich, weil $M$ keins
+der Elemente $a,\, b,\, c$ enthält. Also ist unser Satz wahr.
+
+Der zweite Teil ergibt sich aus dem ersten, wenn man $a$ mit $b$ vertauscht,
+wodurch die Annahme nicht geändert wird.
+\end{satz}
+
+\begin{zusatz}\label{zusatz1}
+Setzt man (wie auch in dem folgenden \sref{gthm25}):
+\[
+    A = c'b,\ B = a'c,\ C = b'a;\  A_1 = b'c,\ B_1 = c'a,\ C_1 = a'b,
+\]
+so ist $A - B - C = 0$ (leer) (dabei bedeutet das Zeichen $-$ den Durchschnitt)
+ und $A_1 - B_1 - C_1 = 0$ (leer) und (nach \sref{gthm17}, \sref{gthm20}) ist
+\begin{gather*}
+    S = A + A = B + B_1 = C + C_1; \\
+    \,0 = A - A_1 = B - B_1 = C - C_1.
+\end{gather*}
+Dies gilt auch dann (nach \sref{gthm20}), wenn von den Elementen $a$, $b$, $c$
+wenigstens zwei verschieden sind.
+\end{zusatz}
+
+\begin{satz}\label{gthm25}
+Sind $a$, $b$, $c$ verschieden, so tritt einer und nur einer der beiden
+folgenden Fälle ein: Entweder ist
+\begin{gather*}
+    b'c = b'a + a'c, \quad c'a = c'b + b'a, \quad a'b = a'c + c'b \\
+    c'b = c'a - a'b, \quad a'c = a'b - b'c, \quad b'a = b'c - c'a
+\end{gather*}
+und jedes Element von $S$ liegt in einer, aber nur einer der Strecken
+$c'b$, $a'c$, $b'a$; oder es ist
+\begin{gather*}
+    c'b = c'a + a'b, \quad a'c = a'b + b'c, \quad b'a = b'c + c'a \\
+    b'c = b'a - a'c, \quad c'a = c'b - b'a, \quad a'b = a'c - c'b
+\end{gather*}
+und jedes Element von $S$ liegt in einer, aber nur einer der Strecken
+$b'c$, $c'a$, $a'b$.
+\Beweis
+Zufolge \sref{gthm23} liegt $c$ entweder in $a'b$ oder in $b'a$. Wir betrachten
+nur den ersten Fall, weil aus ihm der zweite durch Vertauschung von $a$ mit $b$
+hervorgeht. Da $c$ in $a'b$ liegt und von $b$ verschieden ist, so liegt
+(nach \sref{gthm11})) auch $c'$ in $a'b$, und folglich (\sref{gthm16}) ist
+$c'b \TeilVon a'b$; hieraus folgt (nach \sref{gthm19}), dass $c'b$ mit $b'a$ kein
+gemeinsames Element hat; nun ist (mit \sref{gthm17}) $a'b + b'a = b'c + c'b$,
+mithin $b'a \TeilVon b'c$ und folglich (\sref{gthm11}) liegt $a$ in $b'c$.
+
+Aus der Annahme, dass $c$ in $a'b$ liegt, hat sich also ergeben: $c'b \TeilVon a'b$,
+$b'a \TeilVon b'c$, $a$ liegt in $b'c$. Auf dieselbe Weise ergeben sich aus
+dieser letzten Folgerung, wenn man $c$, $a$, $b$ in der Annahme resp. durch $a$,
+$b$, $c$ ersetzt, wieder die Folgerungen $a'c \TeilVon b'c$, $c'b \TeilVon c'a$,
+$b$ liegt in $c'a$; und hieraus folgt abermals $b'a \TeilVon c'a$,
+$a'c \TeilVon a'b$ (und die erste Annahme: $c$ liegt in $a'b$).
+
+Es ist also: $c'b \TeilVon a'b$, $b'a \TeilVon b'c$, $a'c \TeilVon b'c$,
+$c'b \TeilVon c'a$, $b'a \TeilVon c'a$, $a'c \TeilVon a'b$, also auch
+$b'a + a'c \TeilVon b'c$, $c'b + b'a \TeilVon c'a$, $a'c + c'b \TeilVon a'b$.
+
+\newpage
+
+Läge nun z. B. ein Element von $b'c$ weder in $b'a$, noch in $a'c$,
+so wäre es (nach \sref{gthm23}) gemeinsames Element von $b'c$, $a'b$, $c'a$, was
+(nach \sref{gthm24}) unmöglich ist; mithin ist $b'c \TeilVon b'a + a'c$, also
+auch $b'c = b'a + a'c$, und ebenso folgt $c'a = c'b + b'a$, $a'b = a'c + c'b$.
+
+Hätten nun z. B. $b'a$, $a'c$ ein gemeinsames Element, so wäre dasselbe
+auch gemeinsames Element von $b'c$, $c'a$, $a'b$, was (nach \sref{gthm24})
+nicht der Fall ist. Aus $S = b'c + c'b$ folgt endlich $S = b'a + a'c + c'b$,
+womit unser Satz vollständig bewiesen ist.
+\end{satz}
+
+\begin{zusatz}\label{zusatz2}
+Es kann nie gleichzeitig $[a] \TeilVon cb$ und $[b] \TeilVon ca$ sein;
+weil (nach \sref{gthm18}) dann auch gleichzeitig $[a] \TeilVon c'b$ und
+$[b] \TeilVon c'a$  sein müsste, was unmöglich.
+\end{zusatz}
+
+\begin{satz}\label{gthm26}
+Aus $ab = cb$ folgt $a = c$, und wenn $ab = cd$ ein echter Teil von $S$ ist,
+so ist $a = c$, $b = d$.
+\Beweis
+Dies folgt schon aus früheren Sätzen. Da (nach \sref{gthm10}) $c$ in $cb$, also
+auch in $ab$ liegt, so muss, falls $a = b$, also $ab = [a]$ ist, auch $c = a$ sein.
+Ist aber $a$ verschieden von $b$, so ist (nach \sref{gthm18}) $ab = [a] + a'b$, und
+(nach \sref{gthm19}) $a'b$ ist echter Teil von $ab$; nimmt man an, es sei $c$
+verschieden von $a$, so muss $c$ in $a'b$ liegen, also ist (nach \sref{gthm16})
+$cb \TeilVon a'b$, also $cb$ echter Teil von $ab$; da aber $cb = ab$ ist, so ist
+diese Annahme unzulässig, mithin immer $c = a$, w.z.b.w.
+
+Ist ferner $ab = cd$ ein echter Teil von $S$, so muss $b = d$ sein; ist nämlich
+$b$ verschieden von $d$, so muss (\sref{gthm11}) auch $b'$ in $cd$, also auch in
+$ab$ liegen; dann wäre aber (\sref{gthm14}) $ab = S$ gegen die Voraussetzung,
+also ist $b = d$, mithin $ ab = cb$, also auch $a = c$, w.z.b.w.
+\end{satz}
+
+\begin{satz}\label{gthm27}
+Jedes (in \sref{gdef3} erklärte) System $H_s$, ist eine Strecke $a's$ mit dem
+Ende $s$ und ihr Anfang $a'$ ist völlig bestimmt.
+\Beweis
+Ist $H_s= S$, so ist $H_s= s's$ (nach \sref{gthm15}). Ist $H_s$ aber echter Teil
+von $S$, so sei $A$ das System aller außerhalb $H_s$ liegenden Elemente von $S$,
+also $S = A + H_s$. Da $A$ echter Teil von $S$ ist, so kann nicht $A' \TeilVon A$
+sein, es gibt also gewiss ein Element $a$ in $A$, dessen Bild $a'$ außerhalb $A$,
+also in $H_s$ liegt; da (nach \sref{gthm12}) folglich $a's \TeilVon H_s$ ist, so
+haben $a's$, $A$ kein gemeinsames Element.
+
+Da $a$ in  $A$, $s$ in $H_s$ (sogar in $a's$) liegt, so sind $a$, $s$ verschieden,
+also haben (nach \sref{gthm20}) die Strecken $a's$, $s'a$ kein gemeinsames Element,
+und (nach \sref{gthm17}) ist  $a's + s'a = S = H_s + A$, mithin $A \TeilVon s'a$.
+Nimmt man nun an, es sei $a's$ ein echter Teil von $H_s$, und bezeichnet mit $H$
+das System aller derjenigen Elemente von $H_s$, welche außerhalb $a's$, also in
+$s'a$, so ist $H_s = H + a's$, und $s'a = H + A$, also ist $H = H_s - s'a$ der
+Durchschnitt der Systeme $H_s$, $s'a$.
+
+Da nun weder $s$ noch $a$ in $H$ liegt, so folgt aus $H \TeilVon H_s$, und
+$H \TeilVon s'a$ (nach \sref{gdef3} und \sref{gthm11}), dass auch $H' \TeilVon H_s$
+und $H' \TeilVon s'a$, also auch $H' \TeilVon H$, mithin $H = S$ ist. Dies ist
+aber unmöglich, weil $s$ (und ebenso $a$) außerhalb $H$ liegt. Mithin ist gewiss
+$H_s= a's$, und $A = s'a$, w.z.b.w.
+\end{satz}
+
+\newpage
+
+\begin{satz}\label{gthm28}
+Der Durchschnitt von solchen Strecken $as$, $bs$, $\ldots$ welche dasselbe Ende
+$s$ haben, ist selbst eine solche Strecke $hs$, und ihr Anfang $h$ ist
+vollständig bestimmt.
+\Beweis
+Denn jede solche Strecke ist (nach \sref{gthm11}) ein System $H_s$, und (nach \sref{gthm8})
+gilt dasselbe von ihrem Durchschnitt, woraus der Satz (nach \sref{gthm27}) folgt.
+\end{satz}
+
+\begin{zusatz}\label{zusatz3}
+Der Durchschnitt der Strecken $as$, $bs$, $cs$, ... ist selbst eine dieser Strecken.
+\end{zusatz}
+
+Zum Beweise schicke man folgenden Hilfssatz voraus:
+
+\begin{hilfssatz}\label{hilfssatz1}
+Ist $hs$ echter Teil von $as$, und $k$ das Element, dessen Bild $k' = h$ ist,
+so ist $hs$ auch echter Teil von $ks$, und zugleich ist $ks \TeilVon as$.
+\Beweis
+Wäre $k = s$, so wäre $hs = s's = S$, während doch $hs$ echter Teil von $as$,
+also auch von $S$ ist. Da also $k$ verschieden von $s$ ist, so ist (nach \sref{gthm18})
+$ks = [k] + hs$ und (nach \sref{gthm19}) $k$ nicht in $hs$ enthalten, also $hs$
+echter Teil von $ks$. Da $hs$ echter Teil von $as$ ist, so sei $as = M + hs$,
+wo $M$ das System aller Elemente $m$ von $as$, die außerhalb $hs$ liegen und
+also auch von $s$ verschieden sind. Daraus folgt $M' \TeilVon as$, und da
+offenbar $M'$ nicht Teil von $M$ sein kann (weil $M$ nicht $= S$ ist), so
+muss es in $M$ ein Element $m$ geben, dessen Bild $m'$ außerhalb $M$, also
+in $hs$ liegt, woraus $m's \TeilVon hs$ folgt.
+\end{hilfssatz}
+
+\begin{quote}
+[\emph{Der Beweis ist offenbar unvollständig. Ein Beweis des Hilfssatzes ergibt
+sich nach Mitteilung von J. Cavaillès direkt aus \sref{gthm25}, indem man die
+dortigen $a$, $b$, $c$ durch $a$, $k$, $s$ ersetzt.
+Der Zusatz folgt aus \sref{gthm28} und dem Hilfssatz. E. N.
+}] \end{quote}
+
+\begin{satz}\label{gthm29}
+Ist $T$ ein Teil von $S$, und $s$ ein Element von $S$, so gibt es in $S$ immer ein
+und nur ein zugehöriges Element $s_1$, welches die beiden folgenden Eigenschaften hat:
+\begin{enumerate} \setcounter{enumi}{0} \setlength\itemsep{-0.25em}
+   \item  Wenn $a$ der Bedingung $T \TeilVon as$ genügt, so ist $s_1s \TeilVon as$.
+   \item $T \TeilVon s_1s$.
+\end{enumerate}
+Hieraus folgen die beiden Eigenschaften:
+\begin{enumerate} \setcounter{enumi}{2} \setlength\itemsep{-0.25em}
+    \item $s_1$ liegt in $T$.
+    \item Die Strecke $ss_1$ enthält kein von $s$ und $s_1$ verschiedenes Element von $T$.
+\end{enumerate}
+\beweis
+Da $s's = S$, also $T \TeilVon s's$ ist (\sref{gthm15}), so gibt es mindestens
+ein Element $a$, das der Bedingung $T$ as genügt. Ist $A$ das System aller dieser
+Elemente $a$, so ist (nach \sref{gthm28}) der Durchschnitt aller ihnen entsprechenden
+Strecken eine Strecke $s_1s$, wo $s_1$ ein völlig bestimmtes Element von $S$ ist.
+Nach dem Begriffe eines Durchschnitts hat $s_1$ die Eigenschaft 1.\, aber auch die
+Eigenschaft 2.\, weil $T$ ein gemeinsamer Teil aller $as$, mithin auch Teil ihres
+Durchschnitts $s_1s$ ist. Ist $s_1 = s$, also $s_1s = ss = [s]$, so folgt aus 2.\,
+dass $T$ aus dem einzigen Elemente $s$ besteht; und umgekehrt, wenn $s$ in $T$
+liegt und das einzige Element von $T$ ist, so ist $T = [s] = ss]$, also nach 1.\
+auch $s_1s \TeilVon ss$, mithin $s_1 = s$; in diesem Falle hat daher $s_1$ die
+Eigenschaft 3.\ und offenbar auch die Eigenschaft 4. Ist aber $s_1$ verschieden
+von $s$, so ist (nach \sref{gthm18}) $s_1s = [s_1] + (s_1)'s$.
+
+Nimmt man nun an, $s_1$ liege außerhalb $T$, es sei also jedes Element von $T$
+verschieden von $s_1$, so folgt aus 2.\ auch $T \TeilVon (s_1)'s$, und hieraus
+nach 1.\ auch $ss_1 \TeilVon (s_1)'s$, was aber unmöglich ist, weil das (nach
+\sref{gthm10}) in $s_1s$ liegende Element $s_1$ (nach \sref{gthm19}) außerhalb
+$(s_1)'s$ liegt. Mithin ist unsere Annahme unzulässig, d. h.  $s_1$  hat die
+Eigenschaft 3.
+
+Wir betrachten nun die Strecke $ss_1$; besitzt sie ein von $s$ und $s_1$
+verschiedenes Element $u$, so ist auch $s$ verschieden von $s_1$ (weil sonst
+$ss_1 = [s]$, also auch $u = s$ wäre), und (nach \sref{gthm18}) $ss_1 = [s] + ss_1$;
+mithin liegt $u$ in $s's_1$, also (nach \sref{gthm19}) außerhalb $(s_1)'s$, und
+da (wie oben) $s_1s = [s_1] + (s_1)'s$, und $u$ auch von $s_1$ verschieden ist, so
+liegt $u$ auch außerhalb  $s_1s$, also zufolge 2. auch außerhalb $T'$, d. h. $s_1$
+hat auch die Eigenschaft 4.
+\end{satz}
+
+\noindent \textbf{30.}\label{gthm30} \emph{Abbildung von $S$ nach $T$.}
+Durch \sref{gthm29} ist eine Abbildung $\psi$ von $S$ in $T$ hergestellt, welche
+dadurch definiert wird, dass jedes Element $s$ von $S$ durch $\psi$ in das dort
+erklärte, (nach \sref{gdef3}) in $T$ liegende Element $s_1$ übergeht. Ist dann
+$A$ irgend ein Teil von $S$, so soll $A_1$ das zugehörige Bild von $A$ (d. h.
+das System der Bilder aller Elemente $a_1$ von $A$) bedeuten. Es ist also
+$S_1 \TeilVon T$, also auch $T_1 \TeilVon T$, d. h. $T$ wird durch $\psi$ in sich
+selbst abgebildet.
+
+\stepcounter{satz}
+\begin{satz}\label{gthm31}
+Diese Abbildung $\psi$ von $T$ in sich selbst ist eine ähnliche, d. h. sind $a$, $b$
+verschiedene Elemente von $T$, so sind auch deren Bilder $a_1$, $b_1$ verschieden.
+\Beweis
+Nach \sref{gthm29} ist $T \TeilVon a_1a$ und $T \TeilVon b_1b$. Da nun $a$, $b$
+Elemente von $T$ sind, so ist auch $[a] \TeilVon b_1b$, $[b] \TeilVon a_1a$. Wäre
+nun, obgleich $a$, $b$ verschieden sind, doch $a_1 = b_1 = c$, so wäre
+$[a] \TeilVon cb$, $[b] \TeilVon ca$. Da aber $c$ von $a$ und $b$ verschieden
+ist (weil sonst auch $a = b$ wäre), so ist dies (nach Zusatz zu \sref{gthm25})
+unmöglich. Mithin sind $a_1$, $b_1$ verschieden, w.z.b.w.
+\end{satz}
+
+\newpage
+
+\hspace{64pt}
+
+\begin{center}\Large\textbf{Erläuterungen zur vorstehenden Abhandlung}
+\end{center}
+
+\bigskip
+
+Die hier gegebene Definition des Endlichen ist chronologisch die erste, die die
+Ableitung aller Eigenschaften ohne Heranziehung des Auswahlaxioms ermöglicht --
+eine Tatsache, die Dedekind wohl noch nicht bewusst war.
+
+Er selbst zieht nur die ersten Folgerungen; auf diesem Weg lässt sich aus seinem
+letzten Satz noch folgern, dass jede Untermenge einer endlichen Menge endlich ist,
+und es lässt sich das Prinzip der vollständigen Induktion beweisen und damit zu
+der ursprünglichen Dedekindschen Definition übergehen (vgl. eine demnächst, Fund.
+Math.\ \textbf{19}, erscheinende Note von J. Cavaillès).
+
+Einen vergleichenden Überblick über die verschiedenen Definitionen des Endlichen
+gibt A. Tarski (\emph{Sur les ensembles finis}, Fund. Math.\ \textbf{6}), dessen
+eigene Definition so lautet: Eine Menge heißt endlich, wenn in jedem System von
+Untermengen mindestens eine im System minimale enthalten ist. Gleichbedeutend mit
+dieser Minimalbedingung -- durch Übergang zur Komplementärmenge -- ist die
+entsprechende Maximalbedingung; aus beiden folgen alle Eigenschaften der endlichen
+Mengen ohne Heranziehung des Auswahlpostulats.
+
+Dass die obige Definition von Dedekind mit der Minimalbedingung äquivalent ist,
+folgert Tarski aus der auch bei Dedekind in einer anderen Fassung auftretenden
+Relation: $ab' \TeilVon ab + [b']$. Insbesondere gelangt Tarski so von der obigen
+zu der ursprünglichen Dedekindschen Definition, während der umgekehrte Übergang
+das Auswahlpostulat erfordert. Dedekind glaubte -- im Vorwort zur 2. Auflage von
+\textit{\glqq Was sind und was sollen die Zahlen?\grqq{}} -- dass der Nachweis
+der Übereinstimmung der Definitionen die volle dort entwickelte Theorie erfordere.
+
+Wie er sich den Übergang im einzelnen gedacht hatte, zeigt die folgende Stelle
+aus einem Brief an H. Weber:
+\begin{quote}
+\glqq Die kürzeste Charakterisierung des Endlichen und Unendlichen ist, wie ich
+glaube, diejenige, welche ich am 9. März 1889 gefunden und in dem Vorwort (S. XI)
+zur zweiten Auflage (1893) der Schrift \textit{\glqq Was sind und was sollen die
+Zahlen?\grqq{}} mitgeteilt habe. Ich spreche sie so aus: \glq Ein System $S$ heißt
+endlich, wenn es eine Abbildung von $S$ in sich selbst gibt, durch welche kein
+echter Teil von $S$ in sich selbst abgebildet wird; im entgegengesetzten Falle
+heißt $S$ ein unendliches System\grq{}.
+
+\hspace{12pt} Nimmt man aber an, dass man die natürliche Zahlenreihe und ihre
+Gesetze schon vollständig kennt, und
+\end{quote}
+
+\newpage
+
+\begin{quote}
+ersetzt man im vorstehenden das Wort \glq heißt\grq{} durch das Wort \glq ist\grq{},
+so verwandelt sich diese Definition in einen Satz, der sich so beweisen lässt:
+
+\hspace{12pt} Es sei $\phi$ eine Abbildung eines Systems $S$ in sich selbst, durch
+welche kein echter Teil von $S$ in sich selbst abgebildet wird. Das Bild eines
+Elementes $a$ oder eines Teiles $A$ von $S$ bezeichne ich mit $a\phi$ oder $A\phi$
+(viel natürlicher als $\phi(a)$ oder $\phi(A)$). Ist $a$ irgendein Element von $S$,
+so sind auch alle Bilder Elemente von $S$, also ist auch das System $A$ aller dieser
+Bilder ein Teil von $S$,
+\[
+	a\phi, a\phi^2= (a\phi)\phi \ldots, a\phi^{n+1} = (a\phi^n)\phi \ldots
+\]
+und da $A\phi$ das System aller Bilder also ein Teil von $A$ ist,
+\[
+	(a\phi) \phi = a\phi^2, (a\phi^2)\phi = a\phi^3,
+\]
+so wird $A$ durch $\phi$ in sich selbst abgebildet; und folglich ist $A = S$.
+Mithin ist $a$ auch Element von $A$,  es gibt also eine kleinste natürliche Zahl
+$n$, die der Bedingung%
+\[
+	a\phi^n = a
+\]
+genügt. Dann ist $S$ das System der $n$ Elemente
+\[
+	a\phi,a\phi^2,\ldots a\phi^n
+\]
+und diese sind voneinander verschieden. Denn zufolge der Definition von $n$ ist das
+letzte Element verschieden von allen vorhergehenden. Wäre ferner $1 \leq r<s < n$%
+\[
+	a\phi^r = a\phi^s
+\]
+so wäre
+\[
+	(a\phi^r)\phi^{n-s} = (a\phi^s) \phi^{n-s}
+\]
+also
+\[
+	a\phi^{r+n-s} = a\phi^n = a
+\]
+obgleich $1 < r + n - s < n$. Dass endlich $S$ keine anderen als diese $n$ Elemente
+enthält, folgt aus $a\phi^{m + n} = a\phi^m$. Also ist wirklich $S$ ein endliches
+System (im üblichen Sinne), und zugleich ergibt sich, dass $\phi$ eine zyklische
+Permutation der $n$ Elemente von $S$, also auch eine ähnliche (d. h. eindeutig
+umkehrbare) Abbildung ist.
+
+\hspace{12pt} Umgekehrt, besteht ein (im üblichen Sinne) endliches System $S$ aus
+$n$ verschiedenen Elementen
+\[
+	a_1, a_2 \ldots a_{n-1}, a_n
+\]
+und definiert man eine Abbildung $\phi$ von $S$ durch
+\[
+    a_n\phi = a_1, a_r\phi = a_{r+1}
+\]
+für $1 \leq r < n$, so ist $S' = S$, also $\phi$ eine Abbildung von $S$ in sich
+selbst, und man zeigt leicht, dass kein echter Teil von $S$ in sich selbst
+abgebildet wird. Denn wenn ein Teil $A$ von $S$ durch $\phi$ in sich selbst
+abgebildet wird und ein Element $a$ enthält, so muss $A$ auch alle Elemente
+$a\phi, a\phi^2, a\phi^3, \ldots\ $, also alle Elemente von $S$ enthalten,
+mithin $= S$ sein. W.z.b.w.\grqq{}
+\end{quote}
+
+\vspace{-20pt} \begin{flushright} \textbf{Noether.}\end{flushright}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\switchcolumn
+\selectlanguage{english}
+
+% \marginpar{\textit{What are numbers, and what is their purpose?}}%
+\noindent First published in the second edition (1893) of the text
+\textit{``Was sind und was sollen die Zahlen?''} page XVII, in the form:%
+
+\begin{quote}
+A system $S$ is called finite if it can be mapped into itself in such a way that
+no proper part of $S$ is mapped into itself; in the opposite case, $S$ is called
+an infinite system.
+\end{quote}
+
+Pursuing this definition of a finite system $S$ \emph{without using the natural numbers}.
+
+Let $\varphi$ be a mapping of $S$ into itself, which maps no proper part of $S$
+into itself. Small Latin letters $a, b \ldots z$ always mean \emph{elements} of
+$S$, capital Latin letters $A, B \ldots Z$ mean \emph{parts} of $S$. The images
+of $a, A$ generated by $\varphi$ are respectively denoted by $a', A'$.
+\ \\
+
+That $A$ is \emph{part of} $B$ is expressed by $A \partof B$. The system consisting
+of the elements $a, b, c, \ldots$ is denoted by $[a, b, c, \ldots]$.
+\ \\
+
+This gives
+\begin{equation}\label{eq1}
+				S' \partof S
+\end{equation}
+and % \marginpar{\textit{The definition of finiteness.}}
+\begin{equation}\label{eq2}
+		\text{from } A' \partof A \text{ it follows that } A = S.
+\end{equation}
+
+\begin{satz}\label{thm1}$S' = S$.
+\Beweis
+Every element of $S$ is an image of (at least) one element $r$ of $S$. Because
+from \eqref{eq1} it follows $(S')' \partof S'$, hence by \eqref{eq2}, our proposition.
+\end{satz}
+Every system $[s]$ consisting of a single element $s$ is finite because it has
+no proper part and is mapped into itself by the identity function. This case is
+\emph{excluded} in the following; $S$ means a finite system that does \emph{not}
+consist of a single element.
+
+\begin{satz}\label{thm2}
+Every element $s$ is different from its image $s'$, in symbols: $s \neq s'$.
+\Beweis
+Because if $s = s'$, then $[s]' = [s'] = [s] \partof [s]$, so according to
+\eqref{eq2}, also $[s] = S$ in contradiction to our assumption about $S$.
+\end{satz}
+
+\newpage
+
+\begin{deff}\label{def3}
+If $s$ is a certain element of $S$, then $H_s$ shall denote any part of $S$ that
+satisfies the following two conditions:
+\vspace{8pt} %\ \\%
+
+\begin{enumerate}[I.]
+\item $s$ is element of $H_s$, so $[s] \partof H_s$, also
+\[
+	[s] + H_s = H_s.
+\]
+\item If $h$ is an element of $H_s$ different from $s$, then $h'$ is also an
+element of $H_s$. So if $H \partof H_s$, but $s$ is \emph{not contained} in H,
+then $H' \partof H_s$.
+\end{enumerate}
+\end{deff}
+
+\begin{satz}\label{thm4}
+$S$ and $[s]$ are special systems $H_s$, and $[s]$ is the \emph{intersection}
+(the common) of all systems $H_s$ corresponding to the element $s$.
+\Beweis Obvious. \end{satz}
+
+\begin{satz}\label{thm5}
+$H_s = S$ or $H_s$ is a \textit{proper} part of $S$, depending on whether
+$s'$ lies in $H_s$ or not.
+\Beweis
+For if $s'$ lies in $H_s$, then it follows from (\sref{gdef3}{\color{ultrav}.II)}
+that $H'_s \partof H_s$, therefore by \eqref{eq2} that $H_s = S$. Conversely,
+if $H_s = S$, then $s'$ also lies in $H_s$.
+\end{satz}
+
+\begin{satz}\label{thm6}
+If $H_s$ is a \emph{proper} part of $S$, then $s'$ is the only element of
+$H'_s$ that lies outside $H_s$.
+\Beweis
+This is because every element $k$ of $H'_s$ is the image $h'$ of at least one
+element $h$ in $H$. If $k=h'$ is different from $s'$, then $h$ is also different
+from $s$, and consequently (by \sref{gdef3}{\color{ultrav}.II)} $k = h'$ lies in
+$H_s$, while the element $s'$ of $H'_s$ by \sref{thm5} lies outside $H_s$.
+\end{satz}
+
+\begin{satz}\label{thm7}
+Every system $H'_s$ is a system $H_{s'}$, that is (by definition 3.):
+\begin{enumerate}[I'.]
+	\item $s'$ is element of $H'_s$
+	\item If $k$ is an element of $H'_s$ that is different from $s'$, then $k'$
+    also lies in $H'_s$.
+\end{enumerate}
+\beweis
+The first follows from the fact that $s$ lies in $H_s$, the second from the fact
+that $k$ lies in $H_s$ by \sref{thm6}.
+\end{satz}
+
+\begin{satz}\label{thm8}
+If $A$, $B$, $C$ \ldots\ are special systems $H_s$ corresponding to the same $s$,
+then their intersection $H$ is also a system $H_s$.
+\Beweis
+Because according to \sref{gdef3}{\color{ultrav}.I} $s$ is a common element of
+$A, B, C, \ldots$, thus also an element of $H$. If $h$ is an element of $H$ that
+is different from $s$, then by \sref{gdef3}{\color{ultrav}.II}, the image $h'$
+is an element of $A$, of $B$, of $C$, \ldots, and therefore also of $H$. $H$ thus
+fulfills the two conditions I and II in definition \sref{def3} that are
+characteristic of every $H_s$.
+\end{satz}
+
+\begin{deff}\label{def9}
+If $a$, $b$ are certain elements of $S$, then the symbol $ab$ (\emph{section} $ab$)
+should mean the intersection of all those systems $H_b$ which (such as $S$)
+contain the element $a$.%
+\end{deff}
+
+\newpage
+\begin{satz}\label{thm10}
+$a$ is an element of $ab$, i.e., $[a] \partof ab$.
+\Beweis
+This is because $ab$ is the intersection of all systems $H_b$ in which $a$ lies.
+(So a is the \emph{start} of ab.)
+\end{satz}
+
+\begin{satz}\label{thm11}
+$ab$ is a system $H_b$, i.e. $[b] \partof ab$, and if $s$ is an element of $ab$
+different from $b$, then $[s'] \partof ab$.
+\Beweis
+This follows from \sref{thm8}.
+\end{satz}
+
+So $b$ is an element (the \emph{end}) of $ab$. If $H \partof ab$ but $b$ is not
+contained in $H$, then $H' \partof ab$.
+
+\begin{satz}\label{thm12}
+From $[a] \partof H_b$, follows from $ab \partof H_b$.
+\Beweis
+Immediate consequence of definition \sref{def9}.
+\end{satz}
+
+\begin{satz}\label{thm13}
+$aa = [a]$.
+\Beweis
+This follows from \sref{thm4}, because $aa$ is the intersection of all $H_a$
+that contain the element $a$ according to \sref{def3}.I.
+\end{satz}
+
+\begin{satz}\label{thm14}
+If $b'$ is an element of $ab$, then $ab = S$.
+\Beweis
+This follows from \sref{thm11} and \sref{thm5}.
+\end{satz}
+
+\begin{satz}\label{thm15}
+$b' b = S$.
+\Beweis
+This follows from \sref{thm14} and \sref{thm10}.
+\end{satz}
+
+\begin{satz}\label{thm16}
+If $c$ is an element of $ab$, then $cb \partof ab$.
+\Beweis
+This follows from \sref{thm12}, since $ab$ is an $H_b$ by \sref{thm11}, that
+contains the element $c$.
+\end{satz}
+
+\begin{satz}\label{thm17}
+If $A + B$ means the system composed of $A, B$, then one has
+\[
+	a'b + b'a = S.
+\]%
+\beweis
+Because if $s$ is an element of $a'b$, then $s'$ is contained in $b'a$ or $a'b$,
+depending on $s = b$ or different from $b$ (according to \sref{thm10} or
+\sref{thm11} and \sref{def3}.II), and likewise if $s$ is an element of $b'a$,
+then $s'$ is contained in $a'b$ or $b'a$; therefore $(a'b + b'a)' \partof a'b + b'a$.
+This leads to the theorem according to \eqref{eq2}.
+\end{satz}
+
+\begin{satz}\label{thm18}
+If $a$ is different from $b$, then $ab = [a] + a'b$.
+\Beweis
+For since $a$ is an element of $ab$ different from $b$, then $a'$ is an element
+of $ab$ (by \sref{thm10}, \sref{thm11}), and consequently (by \sref{thm16})
+$a'b \partof ab$; since furthermore, by \sref{thm10}, we also have $[a]
+\partof ab$, therefore
+\[
+	[a] + a'b \partof ab.
+\]
+Also, every element $s$ of $[a] + a'b$ that is different from $b$ is either
+$= a$ or an element of $a'b$ that is different from $b$. Thus in both cases $s'$
+is (by \sref{thm10}, \sref{thm11}) an element of $a'b$, therefore also of
+$[a]+ a'b$, and since by \sref{thm11}) also $[b] \partof [a] + a'b$, it follows
+that $[a] + a'b$ is a system $H_b$. Finally, since $[a] \partof [a] + a'b$, by
+\sref{thm12} also
+\[
+	ab \partof [a] + a' b.
+\]
+The theorem follows from the comparison of both results.
+\end{satz}
+
+\newpage
+
+\begin{satz}\label{thm19}
+If $a, b$ are different elements of $S$, then $a$ lies outside $a'b$, and $b$ lies
+outside $b'a$.
+\Beweis
+If one assumes the opposite, that there is an element $a$ that is different from
+$b$ and lies in $a'b$, and that $A$ denotes the system of all such elements $a$,
+the following holds.
+
+If one puts $a'=s$, then $a$ lies in $sb$, and since $a$ is different from $b$,
+and therefore (according to \sref{thm13}) is not in $bb$, then $s$ is different
+from $b$, and from this it follows (according to \sref{thm18}) that $sb = [s] + s'b$.
+Furthermore, since $a$ (according to \sref{thm2}) is different from $s$ and lies
+in $sb$, then $a$ must lie in $s'b$, and from this it follows (again according to
+\sref{thm1}) that $s$ (as the image $a'$) also lies in $s'b$.%
+Therefore, the image $a'$ of every element $a$ of $A$ is also contained in $A$,
+i.e. $A' \partof A$. But since $A=S$ would follow from this, while $A$ does not
+contain the element $b$, our assumption is inadmissible, so the theorem is true,
+qed.
+The second part follows by exchanging $a$ with $b$.%
+\end{satz}
+
+\begin{satz}\label{thm20}
+If $a$, $b$ are different, then the segments $a'b$, $b'a$ have no common element.
+\Beweis
+If one assumes the opposite, that there is a common element $m$ of $a'b$, $b'a$,
+then it follows from the preceding Theorem \sref{thm19} that $m$ is different from
+$b$ and from $a$; therefore (according to \sref{thm11}) the image $m'$ must also be
+a common element of $a'b$ and $b'a$.%
+
+Therefore, if M denotes the system of all such elements $m$, then $M' \partof M$,
+thus $M=S$. But this is impossible because $a$, $b$ are elements of $S$ but not
+elements of $M$. So our theorem is true.%
+\ \\
+\end{satz}
+
+\begin{satz}\label{thm21}
+If $a$, $b$ are different, then the images $a'$, $b'$ are also different.
+\Beweis
+Otherwise the segments $a'b$, $b'a$ would have a common element $a'=b'$, because
+(according to \sref{thm10}) $a'$ is an element of $a'b$ and $b'$ is an element
+of $b'a$.%
+\end{satz}
+
+\begin{satz}\label{thm22}
+From $cb=S$ follows $c = b$.
+\Beweis
+There is (according to \sref{thm1} and \sref{thm21}) in $S$ one and only one element
+$a$ which satisfies the condition $a'=c$, and therefore $a'b = S$, therefore
+$[a] \partof a'b$; therefore (by \sref{thm19}) $a=b$, thus $c=b'$, qed.%
+\end{satz}
+
+\begin{satz}\label{thm23}
+If $a$, $b$ are different, then every element of $S$ is contained in one and only
+one of the segments $a'b$, $b'a$.
+\Beweis
+This follows from \sref{thm17} and \sref{thm20}.
+\end{satz}
+
+\begin{satz}\label{thm24}
+If $a$, $b$, $c$ are different, then the segments $b'c$, $c'a$, $a'b$ have no
+common element, and the same applies to the segments $a'c$, $b'a$, $c'b$.
+\Beweis
+Because the opposite assumption, that there is an element $m$ common to the segments
+$b'c$, $c'a$, $a'b$, leads to a contradiction. Let $M$ be the system of all such
+elements. Since (according to \sref{thm19}) $a$ is not in $a'b$, $b$ is not in $b'c$,
+$c$ is not in $c'a$, then $m$ is different from $c$, $a$, $b$, and consequently
+(by \sref{thm11}) $m'$ is a common element of $b'c$, $c'a$, $a'b$, i.e. an element
+of $M$; therefore $M' \partof M$, hence  $M=S$.
+
+But this is impossible because $M$ does not contain any of the elements $a$, $b$,
+$c$. So our theorem is true.
+
+The second part results from the first if one swaps $a$ with $b$, which does not
+change the assumption.
+\end{satz}
+
+\begin{zusatz}\label{corollary1}
+If you put (as in the following \sref{thm25}):
+\[
+    A = c'b,\ B = a'c,\ C = b'a;\  A_1 = b'c,\ B_1 = c'a,\ C_1 = a'b,
+\]
+then $A - B - C = 0$ (empty) (the symbol $-$ denotes intersection) and
+$A_1 - B_1 - C_1 = 0$ (empty) and (according to \sref{thm17}, \sref{thm20}) hence
+\begin{gather*}
+    S = A + A = B + B_1 = C + C_1; \\
+    \,0 = A - A_1 = B - B_1 = C - C_1.
+\end{gather*}
+This also applies (according to \sref{thm20}) if at least two of the elements
+$a$, $b$, $c$ are different.
+\end{zusatz}
+
+\begin{satz}\label{thm25}
+If $a$, $b$, $c$ are different, then one and only one of the following two
+cases occurs: Either
+\begin{gather*}
+    b'c = b'a + a'c, \quad c'a = c'b + b'a, \quad a'b = a'c + c'b \\
+    c'b = c'a - a'b, \quad a'c = a'b - b'c, \quad b'a = b'c - c'a
+\end{gather*}
+and each element of S lies in one, but only one, of the segments
+$c'b$, $a'c$, $b'a$; or
+\begin{gather*}
+    c'b = c'a + a'b, \quad a'c = a'b + b'c, \quad b'a = b'c + c'a \\
+    b'c = b'a - a'c, \quad c'a = c'b - b'a, \quad a'b = a'c - c'b
+\end{gather*}
+and each element of $S$ lies in one, but only one, of the segments
+$b'c$, $c'a$, $a'b$.
+\Beweis
+According to \sref{thm23}, $c$ lies either in $a'b$ or in $b'a$. We
+only consider the first case because the second arises from it by
+exchanging $a$ for $b$.
+Since $c$ is in $a'b$ and is distinct from $b$, then
+(according to \sref{thm11}) $c'$ also lies in $a'b$, and consequently
+(by \sref{thm16}) $c'b \partof a'b$; from this it follows (by \sref{thm19})
+that $c'b$ has no element in common with $b'a$; now (by \sref{thm17}) is
+$a'b+b'a=b'c+c'b$, therefore $b'a \partof b'c$, and consequently
+(by \sref{thm11}) $a$ is in $b'c$.
+
+From the assumption that $c$ lies in $a'b$, it follows: $c'b \partof a'b$,
+$b'a \partof b'c$, $a$ lies in $b'c$. In the same way, this last
+conclusion follows if one assumes $c$, $a$, $b$ replaced by $a$, $b$, $c$,
+respectively, again we have the consequences $a'c \partof bc$, $cb \partof c'a$,
+and that $b$ lies in $c'a$; and from this it follows again $b'a \partof c'a$,
+$a'c \partof a'b$ (and the first assumption: $c$ lies in $a'b$).
+
+Therefore: $c'b \partof a'b$, $b'a \partof b'c$, $a'c \partof b'c$,
+$c'b \partof ca$, $b'a \partof c'a$, $a'c \partof a'b$, and also
+$b'a + a'c \partof b'c$, $c'b + b'a \partof c'a$, $a'c + c'b \partof a'b$.
+
+\newpage
+
+If now an element of, say, $b'c$ is neither in $b'a$ nor in $a'c$, then
+(by \sref{thm23}) it would be a common element of $b'c$, $a'b$, $c'a$,
+which (by \sref{thm24}) is impossible; therefore $b'c \partof b'a + a'c$,
+therefore also $b'c=b'a + a'c$, and likewise follows $c'a=c'b+b'a$, $a'b=a'c+c'b$.
+
+If, say, $b'a$, $a'c$ have a common element, then the same would also be a common
+element of $b'c$, $c'a$, $a'b$, which (according to \sref{thm24}) is not the case.
+From $S=b'c+c'b$ we finally get $S=b'a+a'c+c'b$, which means our theorem is
+completely proven.
+\end{satz}
+
+\begin{zusatz}
+It can never be that $[a] \partof cb$ and $[b] \partof ca$ at the same time;
+because (according to \sref{thm18}) then $[a] \partof c'b$ and $[b] \partof c'a$
+would have to be at the same time, which is impossible.
+\end{zusatz}
+
+\begin{satz}\label{thm26}
+From $ab=cb$ it follows that $a=c$, and if $ab=cd$ is a proper part of $S$,
+then $a=c$, $b = d$.
+\Beweis
+This follows from earlier theorems.
+Since (by \sref{thm10}) $c$ is in $cb$, and therefore also in $ab$, then if
+$a=b$, then $ab = [a]$, then must also $c=a$. But if $a$ is different from $b$,
+then (by \sref{thm18}) $ab = [a]+a'b$, and (by \sref{thm19}) $a'b$ is a proper
+part of $ab$. If one assumes that $c$ is different from $a$, then $c$ must lie
+in $a'b$, so (by \sref{thm16}) $cb \partof a'b$, i.e. $cb$ is a proper part of $ab$;
+But since $cb=ab$, this assumption is inadmissible, and therefore always $c=a$, qed.
+
+Furthermore, if $ab=cd$ is a proper part of $S$, then $b=d$; If $b$ is different
+from $d$, then (by \sref{thm11}) $b'$ must also be in $cd$, and therefore also in
+$ab$; But then (by \sref{thm14}) would $ab = S$ violating the assumption, so $b=d$,
+therefore $ab=cb$, therefore also $a=c$, qed.
+\end{satz}
+
+\begin{satz}\label{thm27}
+Every system $H_s$ (defined in \sref{def3}) is a segment $a's$ with the end $s$
+and its beginning $a'$ completely determined.
+\Beweis
+If $H_s= S$, then $H_s= s's$ (according to \sref{thm15}).
+But if $H_s$ is a proper part of $S$, then $A$ is the system of all elements
+of $S$ that lie outside $H_s$, so $S=A+H_s$. Since $A$ is a proper part of $S$,
+then $A' \partof A$ cannot be, so there is certainly an element $a$ in $A$, whose
+image $a'$ lies outside $A$, hence in $H_s$. Since (according to \sref{thm12})
+$a's \partof H_s$, then $a's$ and $A$ have no common element.
+
+Since $a$ is in $A$, $s$ is in $H_s$ (even in $a's$), then $a$ and $s$ are
+different, so (by \sref{thm20}) the segments $a's$, $s'a$ have no common element,
+and (by \sref{thm17}) $a's+  s'a=S=H_s+ A,$ therefore $A \partof s'a$.
+If one now assumes that $a's$ is a proper part of $H_s$, and $H$ denotes the
+system of all those elements of $H_s$ which are outside $a's$, i.e., in $s'a$,
+then $H_s = H+a's$, and $s'a = H + A$, so $H=H_s-s'a$ is the intersection of the
+systems $H_s$, $s'a$.
+
+Since neither $s$ nor $a$ lies in $H$, it follows from $H \partof H_s$, and
+$H \partof s'a$ (according to \sref{def3} and \sref{thm11}) that $H' \partof H_s$
+and $H' \partof s'a$, therefore also $H' \partof H$, hence $H = S$. But this is
+impossible because $s$ (and also $a$) lies outside $H$. Therefore certainly
+$H_s = a's$, and $A = s'a$, qed.
+\end{satz}
+
+\newpage
+
+\begin{satz}\label{thm28}
+The intersection of such segments $as, bs, \ldots$ which have the same end $s$ is
+itself such a segment $hs$, and its beginning $h$ is completely determined.
+\Beweis
+For every such segment is (according to \sref{thm11}) a system $H_s$, and
+(according to \sref{thm8}) the same applies to its intersection, from which the
+theorem (according to \sref{thm27}) follows.
+\end{satz}
+
+\begin{zusatz} \label{cor_to_thm28}
+The intersection of the segments $as, bs, cs \ldots$ is itself one of these segments.
+\end{zusatz}
+
+To prove it, we first provide the following lemma:
+
+\begin{hilfssatz}
+If $hs$ is a proper part of $as$, and $k$ is the element whose image is $k'=h$,
+then $hs$ is also a proper part of $ks$, and at the same time $ks \partof as$.
+\Beweis
+If $k=s$, then $hs=s's= S$, while $hs$ is a proper part of $as$, and therefore
+also of $S$. Since $k$ is different from $s$, then (by \sref{thm18}) $ks = [k]+ hs$,
+and (according to \sref{thm19}) $k$ is not contained in $hs$, so $hs$ is a proper
+part of $ks$. Since $hs$ is a proper part of $as$, let $as = M + hs$, where $M$
+is the system of all elements $m$ of $as$ that lie outside $hs$ and are therefore
+also different from $s$. From this follows $M' \partof as$, and since $M'$ obviously
+cannot be part of $M$ (because $M$ is not $= S$), there must be in $M$ an element
+$m$, the image $m'$ of which lies outside $M$, hence in $hs$, from which
+$m's \partof hs$ follows.
+\end{hilfssatz}
+
+\begin{quote}
+[\emph{The proof is apparently incomplete. According to J. Cavaillès, a proof of
+the Lemma results directly from \sref{thm25} by replacing the $a$, $b$, $c$ there
+by $a$, $k$, $s$. The Corollary follows from \sref{thm28} and the Lemma.
+\ \\
+E. N.
+}]\end{quote}
+
+
+\begin{satz}\label{thm29}
+If $T$ is a part of $S$, and $s$ is an element of $S$, then in $S$ there is always
+one and only one associated element $s_1$, which has the following two properties:
+\begin{enumerate} \setcounter{enumi}{0} \setlength\itemsep{-0.25em}
+  \item If $a$ satisfies the condition $T \partof as$, then $s_1s \partof as$.
+  \item $T \partof s_1s$.
+\end{enumerate}
+From this follow the two properties:
+\begin{enumerate} \setcounter{enumi}{2} \setlength\itemsep{-0.25em}
+  \item $s_1$ is in $T$.
+  \item the segment $ss_1$ contains no element of $T$ that is different from $s$ and $s_1$.
+\end{enumerate}
+\beweis
+Since $s's = S$, therefore $T \partof s's$ (by \sref{thm15}), there is at least
+one element $a$ that satisfies the condition $T \partof as$. If $A$ is the system
+of all such elements $a$, then (according to \sref{thm28}) the intersection of
+all the segments corresponding to them is a segment $s_1s$, where $s_1$ is a
+completely determined element of $S$. According to the concept of an intersection,
+$s_1$ has the property 1., but also property 2., because $T$ is a common part of
+all $as$, and therefore also part of their intersection $s_1s$. If $s_1 = s$,
+then $s_1s = ss = [s]$, then it follows from 2.\ that $T$ consists of the single
+element $s$; and vice versa, if $s$ lies in $T$ and is the only element of $T$,
+then $T = [s] = ss$, so then according to 1. $s_1s \partof ss$, therefore $s_1 = s$.
+In this case, $s_1$ therefore has the property 3.\ and obviously also the property
+4.\ But if $s_1$ is different from $s$, then (according to \sref{thm18})
+$s_1s = [s_1] + (s_1)'s$.
+
+If one now assumes that $s_1$ lies outside $T$, if every element of $T$ is
+different from $s_1$, it follows from 2.\ also that $T \partof (s_1)'s$, and from
+this according to 1.\ we also have $s_1s \partof (s_1)'s$, but this is impossible
+because (according to \sref{thm10}) in $s_1s$ is the element $s_1$ (according to
+\sref{thm19}) which lies outside $(s_1)'s$; therefore our assumption is inadmissible,
+i.e., $s_1$ has property 3.
+
+We now consider the segment $ss_1$; if it has an element $u$ that is different
+from $s$ and $s_1$, then $s$ is also different from $s_1$ (because otherwise
+$ss_1 = [s]$, which would also give $u=s$), and (according to \sref{thm18})
+$ss_1 = [s] + ss_1$; therefore $u$ lies in $s's_1$, therefore (according to
+\sref{thm19}) outside $(s_1)'s$, and since (as above) $s_1s= [s_1] + (s_1)'s$,
+and $u$ is also different from $s_1$, then $u$ also lies outside $s_1s$, therefore
+according to 2.\ also outside $T'$, i.e., $s_1$ also has property 4.
+\end{satz}
+
+\noindent \textbf{30.}\label{thm30} \hspace{-10pt} \emph{Mapping of $S$ into $T$}.
+Through \sref{thm29} a mapping $\psi$ of $S$ into $T$ is
+created, which is defined by the fact that each element $s$ of $S$ is sent by
+$\psi$ into the element $s_1$, which is defined there and (according to \sref{def3})
+lies in $T$. If $A$ is then any part of $S$, then $A_1$ should mean the associated
+image of $A$ (i.e., the system of images $a_1$ of all elements $a$ of $A$). So
+$S_1 \partof T$, also $T_1 \partof T$, i.e. $T$ is mapped by $\psi$ into itself.
+
+\stepcounter{satz}
+\begin{satz}\label{thm31}
+This mapping of $T$ into itself is a similar one, i.e., if $a, b$ are different
+elements of $T$, then their images $a_1, b_1$ are also different.%
+\Beweis
+By \sref{thm29}, $T \partof a_1a$ and $T \partof b_1b$. Since $a, b$ are elements
+of $T$, then $[a] \partof b_1b$, $[b] \partof a_1a$. If, although $a, b$ are
+different, $a_1 = b_1  = c$, so then $[a] \partof cb, [b] \partof c$. But since
+$c$ is different from $a$ and $b$ (because otherwise $a = b$), this is impossible
+(after the Corollary to \sref{thm25}). Therefore $a_1, b_1$ are different, qed.
+\end{satz}
+
+\newpage
+
+\hspace{84pt}
+
+\begin{center}{\Large\textbf{Explanations to the above treatise \ \\ }}
+\end{center}
+
+\vspace{36pt}
+
+The definition of the finite given here is chronologically the first that enables
+the derivation of all properties without using the axiom of choice -- a fact that
+Dedekind was probably not yet aware of.
+
+He himself only draws the first conclusions. In this way, one can still conclude
+from his last theorem that every subset of a finite set is finite, and the principle
+of complete induction can be proven and thus move on to Dedekind's original
+definition (cf. a forthcoming note by J. Cavaillès, Fund.\ Math.\ \textbf{19}.)
+\ \\
+
+A comparative overview of the various definitions of finiteness is given by A.
+Tarski (\emph{Sur les ensembles finis}, Fund.\ Math.\ \textbf{6}) whose own
+definition goes like this: A set is said to be finite if in every system of
+subsets at least one is included that is minimal in the system. The corresponding
+maximum condition is equivalent to this minimum condition -- through transition to the
+complementary set; all properties of finite sets follow from both without using
+the axiom of choice.
+\ \\
+
+Tarski concludes that the above definition by Dedekind is equivalent to the
+minimal condition from the relation that also appears in a different version in
+Dedekind: $ab' \partof ab+[b']$. In particular, Tarski gets from the above to
+the original Dedekind definition, while the reverse transition requires the axiom
+of choice. Dedekind believed -- in the preface to the 2nd edition of
+\emph{``Was sind und was sollen die Zahlen?''} -- that the proof of the agreement
+of the definitions required the full theory developed there.
+\ \\
+
+How he thought about the transition in detail is shown in the following passage
+from a letter to H. Weber:
+
+\begin{quote}
+``The shortest characterization of the finite and infinite is, as I believe, the
+one which I found on March 9, 1889 and in the preface (p. XI) to the second edition
+(1893) of the work, \emph{``Was sind und was sollen die Zahlen?''}. I say it like
+this: `A system $S$ is called finite if there is a mapping of $S$ into itself
+through which no proper part of $S$ is mapped into itself; in the opposite case,
+$S$ is called an infinite system'.
+\ \\
+
+\hspace{12pt} But if one assumes that one already knows the series of natural
+number and its laws completely, and
+
+\end{quote}
+
+\newpage
+
+\begin{quote}
+one replaces the word `called' with the word `is' in the above, then this definition
+turns into a theorem that can be proven like this:
+
+\hspace{12pt} Let $\phi$ be a mapping of a system $S$ into itself, through which
+no proper part of $S$ is mapped into itself. I denote the image of an element $a$
+or a part $A$ of $S$ with $a\phi$ or $A\phi$ (much more natural than $\phi(a)$
+or $\phi(A)$). If $a$ is any element of $S$, then all the images are elements of
+$S$, thus the system $A$ of all these images is also a part of $S$,
+\vspace{16pt}
+\[
+	a\phi, a\phi^2= (a\phi)\phi \ldots, a\phi^{n+1} = (a\phi^n)\phi \ldots
+\]
+and since $A\phi$ is the system of all images is also a part of $A$,
+\[
+	(a\phi) \phi = a\phi^2, (a\phi^2)\phi = a\phi^3,
+\]
+then $A$ is mapped into itself by $\phi$; and consequently $A = S$. Therefore $a$
+is also an element of $A$, so there is a smallest natural number $n$, that
+satisfies the condition
+\[
+	a\phi^n = a.
+\]
+Then $S$ is the system of $n$ elements
+\[
+	a\phi,a\phi^2,\ldots a\phi^n
+\]
+and these are different from each other.
+For according to the definition of $n$, the last element is different from all
+previous ones. Assuming further $1 \leq r<s < n$ and
+\[
+	a\phi^r = a\phi^s
+\]
+than it would be the case that
+\[
+	(a\phi^r)\phi^{n-s} = (a\phi^s) \phi^{n-s}
+\]
+hence
+\[
+	a\phi^{r+n-s} = a\phi^n=a
+\]
+although $1<r+n-s<n$.
+Finally, the fact that $S$ contains no elements other than these follows from
+$a\phi^{m + n} = a\phi^m$. So $S$ is really a finite system (in the usual sense),
+and at the same time it follows that $\phi$ is a cyclic permutation of the $n$
+elements of $S$, so it is also a similar (i.e. clearly revertible) mapping.
+
+\hspace{12pt} Conversely, a finite (in the usual sense) system $S$ consists of
+$n$ different elements
+\[
+	a_1, a_2 \ldots a_{n-1}, a_n
+\]
+and one defines a mapping $\phi$ of $S$ by
+\[
+a_n\phi = a_1, a_r\phi=a_{r+1}
+\]
+for $1\leq r<n$, then $S' = S$, so $\phi$ is a mapping from $S$ into itself, and
+one easily shows that no proper part of $S$ is mapped into itself. Because if
+a part $A$ of $S$ is mapped by $\phi$ into itself and contains an element $a$,
+then $A$ must also contain all elements $a\phi, a\phi^2, a\phi^3, \ldots \ $, i.e.,
+all elements of $S$, and therefore be $= S$. Qed.''
+\end{quote}
+
+\begin{flushright}\textbf{Noether.}\end{flushright}
+
+\end{paracol}
+
+\end{document}
