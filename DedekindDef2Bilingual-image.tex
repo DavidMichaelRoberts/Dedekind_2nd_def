@@ -96,7 +96,7 @@
     \draw (0,0) circle (\radius);
     %% left cycle
     % ticks and labels 
-    \def\tickmarks{{90/$c$},{105/$c'$},{210/$b$},{225/$b'$},{320/$a$},{335/$a'$}}
+    \def\tickmarks{{90/$c$},{105/$c'$},{210/$b$},{225/$b'\ \,$},{320/$a$},{335/$a'$}}
     \foreach \angle/\ticklabel in \tickmarks {
         \draw[thick] (\angle:{\radius - 0.15cm}) -- (\angle:{\radius + 0.15cm});
         \node at (\angle:{\radius + 0.35cm}) {\ticklabel};}
@@ -111,7 +111,7 @@
     \draw (0,0) circle (\radius);
     %% right cycle
     % ticks and labels
-    \def\tickmarks{{90/$b$},{105/$b'$},{210/$c$},{225/$c'$},{320/$a$},{335/$a'$}}
+    \def\tickmarks{{90/$b$},{105/$b'$},{210/$c$},{225/$c'\ \,$},{320/$a$},{335/$a'$}}
     \foreach \angle/\ticklabel in \tickmarks {
         \draw[thick] (\angle:{\radius - 0.15cm}) -- (\angle:{\radius + 0.15cm});
         \node at (\angle:{\radius + 0.35cm}) {\ticklabel};}
