@@ -1,7 +1,7 @@
 \documentclass[leqno,hidelinks]{article}
 \usepackage[german,english]{babel}
 \usepackage{amsmath,amssymb,amsthm}
-\usepackage{color,hyperref}
+\usepackage{xcolor,hyperref}
 \usepackage{enumerate}
 \usepackage{microtype}
 
@@ -75,6 +75,56 @@
 \newcommand{\sref}[1]{\underline{\ref{#1}}}% without ()
 
 \usepackage{paracol}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{calc}
+
+
+
+\newcommand{\DoubleCaptionFig}{% added <<<<<<<<<<<<<<<<<<<<< https://tex.stackexchange.com/a/211767/161015
+\end{paracol}
+        \noindent%
+\begin{center}%
+        \begin{tikzpicture}[scale=0.7]
+    \def\radius{1.8cm}
+    \begin{scope}
+    \draw (0,0) circle (\radius);
+    %% left cycle
+    % ticks and labels 
+    \def\tickmarks{{90/$c$},{105/$c'$},{210/$b$},{225/$b'$},{320/$a$},{335/$a'$}}
+    \foreach \angle/\ticklabel in \tickmarks {
+        \draw[thick] (\angle:{\radius - 0.15cm}) -- (\angle:{\radius + 0.15cm});
+        \node at (\angle:{\radius + 0.35cm}) {\ticklabel};}
+    % arrow
+    \def\startAngle{30}
+    \def\endAngle{50}
+    \def\arrowRadius{\radius + 0.5cm}
+    \draw[->, >=Stealth, thick] (\startAngle:\arrowRadius) arc (\startAngle:\endAngle:\arrowRadius);
+    \node[below] at ($(\startAngle:\arrowRadius) + (0.2cm, 0.1cm)$) {$\varphi$};
+    \end{scope}
+    \begin{scope}[shift={(4cm,-2.5cm)}]
+    \draw (0,0) circle (\radius);
+    %% right cycle
+    % ticks and labels
+    \def\tickmarks{{90/$b$},{105/$b'$},{210/$c$},{225/$c'$},{320/$a$},{335/$a'$}}
+    \foreach \angle/\ticklabel in \tickmarks {
+        \draw[thick] (\angle:{\radius - 0.15cm}) -- (\angle:{\radius + 0.15cm});
+        \node at (\angle:{\radius + 0.35cm}) {\ticklabel};}
+    % arrow
+    \def\startAngle{30}
+    \def\endAngle{50}
+    \def\arrowRadius{\radius + 0.5cm}
+    \draw[->, >=Stealth, thick] (\startAngle:\arrowRadius) arc (\startAngle:\endAngle:\arrowRadius);
+    \node[below] at ($(\startAngle:\arrowRadius) + (0.2cm, 0.1cm)$) {$\varphi$};
+    \end{scope}
+\end{tikzpicture}%
+\end{center}%
+                
+        \medskip%
+    \begin{paracol}{2}\sloppy%
+    }
+
+
 
 \begin{document}
 \hypersetup{pageanchor=false}
@@ -88,6 +138,8 @@
 
 \begin{paracol}{2} % specify two columns...
 
+
+\begin{leftcolumn}
 \selectlanguage{german}
 
 \noindent Zuerst veröffentlicht in der zweiten Auflage (1893) der Schrift
@@ -420,7 +472,10 @@ Es ist also: $c'b \TeilVon a'b$, $b'a \TeilVon b'c$, $a'c \TeilVon b'c$,
 $c'b \TeilVon c'a$, $b'a \TeilVon c'a$, $a'c \TeilVon a'b$, also auch
 $b'a + a'c \TeilVon b'c$, $c'b + b'a \TeilVon c'a$, $a'c + c'b \TeilVon a'b$.
 
+
 \newpage
+
+
 
 Läge nun z. B. ein Element von $b'c$ weder in $b'a$, noch in $a'c$,
 so wäre es (nach \sref{gthm23}) gemeinsames Element von $b'c$, $a'b$, $c'a$, was
@@ -433,281 +488,13 @@ nicht der Fall ist. Aus $S = b'c + c'b$ folgt endlich $S = b'a + a'c + c'b$,
 womit unser Satz vollständig bewiesen ist.
 \end{satz}
 
-\begin{zusatz}\label{zusatz2}
-Es kann nie gleichzeitig $[a] \TeilVon cb$ und $[b] \TeilVon ca$ sein;
-weil (nach \sref{gthm18}) dann auch gleichzeitig $[a] \TeilVon c'b$ und
-$[b] \TeilVon c'a$  sein müsste, was unmöglich.
-\end{zusatz}
 
-\begin{satz}\label{gthm26}
-Aus $ab = cb$ folgt $a = c$, und wenn $ab = cd$ ein echter Teil von $S$ ist,
-so ist $a = c$, $b = d$.
-\Beweis
-Dies folgt schon aus früheren Sätzen. Da (nach \sref{gthm10}) $c$ in $cb$, also
-auch in $ab$ liegt, so muss, falls $a = b$, also $ab = [a]$ ist, auch $c = a$ sein.
-Ist aber $a$ verschieden von $b$, so ist (nach \sref{gthm18}) $ab = [a] + a'b$, und
-(nach \sref{gthm19}) $a'b$ ist echter Teil von $ab$; nimmt man an, es sei $c$
-verschieden von $a$, so muss $c$ in $a'b$ liegen, also ist (nach \sref{gthm16})
-$cb \TeilVon a'b$, also $cb$ echter Teil von $ab$; da aber $cb = ab$ ist, so ist
-diese Annahme unzulässig, mithin immer $c = a$, w.z.b.w.
+%% XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-Ist ferner $ab = cd$ ein echter Teil von $S$, so muss $b = d$ sein; ist nämlich
-$b$ verschieden von $d$, so muss (\sref{gthm11}) auch $b'$ in $cd$, also auch in
-$ab$ liegen; dann wäre aber (\sref{gthm14}) $ab = S$ gegen die Voraussetzung,
-also ist $b = d$, mithin $ ab = cb$, also auch $a = c$, w.z.b.w.
-\end{satz}
+\end{leftcolumn}
 
-\begin{satz}\label{gthm27}
-Jedes (in \sref{gdef3} erklärte) System $H_s$, ist eine Strecke $a's$ mit dem
-Ende $s$ und ihr Anfang $a'$ ist völlig bestimmt.
-\Beweis
-Ist $H_s= S$, so ist $H_s= s's$ (nach \sref{gthm15}). Ist $H_s$ aber echter Teil
-von $S$, so sei $A$ das System aller außerhalb $H_s$ liegenden Elemente von $S$,
-also $S = A + H_s$. Da $A$ echter Teil von $S$ ist, so kann nicht $A' \TeilVon A$
-sein, es gibt also gewiss ein Element $a$ in $A$, dessen Bild $a'$ außerhalb $A$,
-also in $H_s$ liegt; da (nach \sref{gthm12}) folglich $a's \TeilVon H_s$ ist, so
-haben $a's$, $A$ kein gemeinsames Element.
+\begin{rightcolumn}
 
-Da $a$ in  $A$, $s$ in $H_s$ (sogar in $a's$) liegt, so sind $a$, $s$ verschieden,
-also haben (nach \sref{gthm20}) die Strecken $a's$, $s'a$ kein gemeinsames Element,
-und (nach \sref{gthm17}) ist  $a's + s'a = S = H_s + A$, mithin $A \TeilVon s'a$.
-Nimmt man nun an, es sei $a's$ ein echter Teil von $H_s$, und bezeichnet mit $H$
-das System aller derjenigen Elemente von $H_s$, welche außerhalb $a's$, also in
-$s'a$, so ist $H_s = H + a's$, und $s'a = H + A$, also ist $H = H_s - s'a$ der
-Durchschnitt der Systeme $H_s$, $s'a$.
-
-Da nun weder $s$ noch $a$ in $H$ liegt, so folgt aus $H \TeilVon H_s$, und
-$H \TeilVon s'a$ (nach \sref{gdef3} und \sref{gthm11}), dass auch $H' \TeilVon H_s$
-und $H' \TeilVon s'a$, also auch $H' \TeilVon H$, mithin $H = S$ ist. Dies ist
-aber unmöglich, weil $s$ (und ebenso $a$) außerhalb $H$ liegt. Mithin ist gewiss
-$H_s= a's$, und $A = s'a$, w.z.b.w.
-\end{satz}
-
-\newpage
-
-\begin{satz}\label{gthm28}
-Der Durchschnitt von solchen Strecken $as$, $bs$, $\ldots$ welche dasselbe Ende
-$s$ haben, ist selbst eine solche Strecke $hs$, und ihr Anfang $h$ ist
-vollständig bestimmt.
-\Beweis
-Denn jede solche Strecke ist (nach \sref{gthm11}) ein System $H_s$, und (nach \sref{gthm8})
-gilt dasselbe von ihrem Durchschnitt, woraus der Satz (nach \sref{gthm27}) folgt.
-\end{satz}
-
-\begin{zusatz}\label{zusatz3}
-Der Durchschnitt der Strecken $as$, $bs$, $cs$, ... ist selbst eine dieser Strecken.
-\end{zusatz}
-
-Zum Beweise schicke man folgenden Hilfssatz voraus:
-
-\begin{hilfssatz}\label{hilfssatz1}
-Ist $hs$ echter Teil von $as$, und $k$ das Element, dessen Bild $k' = h$ ist,
-so ist $hs$ auch echter Teil von $ks$, und zugleich ist $ks \TeilVon as$.
-\Beweis
-Wäre $k = s$, so wäre $hs = s's = S$, während doch $hs$ echter Teil von $as$,
-also auch von $S$ ist. Da also $k$ verschieden von $s$ ist, so ist (nach \sref{gthm18})
-$ks = [k] + hs$ und (nach \sref{gthm19}) $k$ nicht in $hs$ enthalten, also $hs$
-echter Teil von $ks$. Da $hs$ echter Teil von $as$ ist, so sei $as = M + hs$,
-wo $M$ das System aller Elemente $m$ von $as$, die außerhalb $hs$ liegen und
-also auch von $s$ verschieden sind. Daraus folgt $M' \TeilVon as$, und da
-offenbar $M'$ nicht Teil von $M$ sein kann (weil $M$ nicht $= S$ ist), so
-muss es in $M$ ein Element $m$ geben, dessen Bild $m'$ außerhalb $M$, also
-in $hs$ liegt, woraus $m's \TeilVon hs$ folgt.
-\end{hilfssatz}
-
-\begin{quote}
-[\emph{Der Beweis ist offenbar unvollständig. Ein Beweis des Hilfssatzes ergibt
-sich nach Mitteilung von J. Cavaillès direkt aus \sref{gthm25}, indem man die
-dortigen $a$, $b$, $c$ durch $a$, $k$, $s$ ersetzt.
-Der Zusatz folgt aus \sref{gthm28} und dem Hilfssatz. E. N.
-}] \end{quote}
-
-\begin{satz}\label{gthm29}
-Ist $T$ ein Teil von $S$, und $s$ ein Element von $S$, so gibt es in $S$ immer ein
-und nur ein zugehöriges Element $s_1$, welches die beiden folgenden Eigenschaften hat:
-\begin{enumerate} \setcounter{enumi}{0} \setlength\itemsep{-0.25em}
-   \item  Wenn $a$ der Bedingung $T \TeilVon as$ genügt, so ist $s_1s \TeilVon as$.
-   \item $T \TeilVon s_1s$.
-\end{enumerate}
-Hieraus folgen die beiden Eigenschaften:
-\begin{enumerate} \setcounter{enumi}{2} \setlength\itemsep{-0.25em}
-    \item $s_1$ liegt in $T$.
-    \item Die Strecke $ss_1$ enthält kein von $s$ und $s_1$ verschiedenes Element von $T$.
-\end{enumerate}
-\beweis
-Da $s's = S$, also $T \TeilVon s's$ ist (\sref{gthm15}), so gibt es mindestens
-ein Element $a$, das der Bedingung $T$ as genügt. Ist $A$ das System aller dieser
-Elemente $a$, so ist (nach \sref{gthm28}) der Durchschnitt aller ihnen entsprechenden
-Strecken eine Strecke $s_1s$, wo $s_1$ ein völlig bestimmtes Element von $S$ ist.
-Nach dem Begriffe eines Durchschnitts hat $s_1$ die Eigenschaft 1.\, aber auch die
-Eigenschaft 2.\, weil $T$ ein gemeinsamer Teil aller $as$, mithin auch Teil ihres
-Durchschnitts $s_1s$ ist. Ist $s_1 = s$, also $s_1s = ss = [s]$, so folgt aus 2.\,
-dass $T$ aus dem einzigen Elemente $s$ besteht; und umgekehrt, wenn $s$ in $T$
-liegt und das einzige Element von $T$ ist, so ist $T = [s] = ss]$, also nach 1.\
-auch $s_1s \TeilVon ss$, mithin $s_1 = s$; in diesem Falle hat daher $s_1$ die
-Eigenschaft 3.\ und offenbar auch die Eigenschaft 4. Ist aber $s_1$ verschieden
-von $s$, so ist (nach \sref{gthm18}) $s_1s = [s_1] + (s_1)'s$.
-
-Nimmt man nun an, $s_1$ liege außerhalb $T$, es sei also jedes Element von $T$
-verschieden von $s_1$, so folgt aus 2.\ auch $T \TeilVon (s_1)'s$, und hieraus
-nach 1.\ auch $ss_1 \TeilVon (s_1)'s$, was aber unmöglich ist, weil das (nach
-\sref{gthm10}) in $s_1s$ liegende Element $s_1$ (nach \sref{gthm19}) außerhalb
-$(s_1)'s$ liegt. Mithin ist unsere Annahme unzulässig, d. h.  $s_1$  hat die
-Eigenschaft 3.
-
-Wir betrachten nun die Strecke $ss_1$; besitzt sie ein von $s$ und $s_1$
-verschiedenes Element $u$, so ist auch $s$ verschieden von $s_1$ (weil sonst
-$ss_1 = [s]$, also auch $u = s$ wäre), und (nach \sref{gthm18}) $ss_1 = [s] + ss_1$;
-mithin liegt $u$ in $s's_1$, also (nach \sref{gthm19}) außerhalb $(s_1)'s$, und
-da (wie oben) $s_1s = [s_1] + (s_1)'s$, und $u$ auch von $s_1$ verschieden ist, so
-liegt $u$ auch außerhalb  $s_1s$, also zufolge 2. auch außerhalb $T'$, d. h. $s_1$
-hat auch die Eigenschaft 4.
-\end{satz}
-
-\noindent \textbf{30.}\label{gthm30} \emph{Abbildung von $S$ nach $T$.}
-Durch \sref{gthm29} ist eine Abbildung $\psi$ von $S$ in $T$ hergestellt, welche
-dadurch definiert wird, dass jedes Element $s$ von $S$ durch $\psi$ in das dort
-erklärte, (nach \sref{gdef3}) in $T$ liegende Element $s_1$ übergeht. Ist dann
-$A$ irgend ein Teil von $S$, so soll $A_1$ das zugehörige Bild von $A$ (d. h.
-das System der Bilder aller Elemente $a_1$ von $A$) bedeuten. Es ist also
-$S_1 \TeilVon T$, also auch $T_1 \TeilVon T$, d. h. $T$ wird durch $\psi$ in sich
-selbst abgebildet.
-
-\stepcounter{satz}
-\begin{satz}\label{gthm31}
-Diese Abbildung $\psi$ von $T$ in sich selbst ist eine ähnliche, d. h. sind $a$, $b$
-verschiedene Elemente von $T$, so sind auch deren Bilder $a_1$, $b_1$ verschieden.
-\Beweis
-Nach \sref{gthm29} ist $T \TeilVon a_1a$ und $T \TeilVon b_1b$. Da nun $a$, $b$
-Elemente von $T$ sind, so ist auch $[a] \TeilVon b_1b$, $[b] \TeilVon a_1a$. Wäre
-nun, obgleich $a$, $b$ verschieden sind, doch $a_1 = b_1 = c$, so wäre
-$[a] \TeilVon cb$, $[b] \TeilVon ca$. Da aber $c$ von $a$ und $b$ verschieden
-ist (weil sonst auch $a = b$ wäre), so ist dies (nach Zusatz zu \sref{gthm25})
-unmöglich. Mithin sind $a_1$, $b_1$ verschieden, w.z.b.w.
-\end{satz}
-
-\newpage
-
-\hspace{64pt}
-
-\begin{center}\Large\textbf{Erläuterungen zur vorstehenden Abhandlung}
-\end{center}
-
-\bigskip
-
-Die hier gegebene Definition des Endlichen ist chronologisch die erste, die die
-Ableitung aller Eigenschaften ohne Heranziehung des Auswahlaxioms ermöglicht --
-eine Tatsache, die Dedekind wohl noch nicht bewusst war.
-
-Er selbst zieht nur die ersten Folgerungen; auf diesem Weg lässt sich aus seinem
-letzten Satz noch folgern, dass jede Untermenge einer endlichen Menge endlich ist,
-und es lässt sich das Prinzip der vollständigen Induktion beweisen und damit zu
-der ursprünglichen Dedekindschen Definition übergehen (vgl. eine demnächst, Fund.
-Math.\ \textbf{19}, erscheinende Note von J. Cavaillès).
-
-Einen vergleichenden Überblick über die verschiedenen Definitionen des Endlichen
-gibt A. Tarski (\emph{Sur les ensembles finis}, Fund. Math.\ \textbf{6}), dessen
-eigene Definition so lautet: Eine Menge heißt endlich, wenn in jedem System von
-Untermengen mindestens eine im System minimale enthalten ist. Gleichbedeutend mit
-dieser Minimalbedingung -- durch Übergang zur Komplementärmenge -- ist die
-entsprechende Maximalbedingung; aus beiden folgen alle Eigenschaften der endlichen
-Mengen ohne Heranziehung des Auswahlpostulats.
-
-Dass die obige Definition von Dedekind mit der Minimalbedingung äquivalent ist,
-folgert Tarski aus der auch bei Dedekind in einer anderen Fassung auftretenden
-Relation: $ab' \TeilVon ab + [b']$. Insbesondere gelangt Tarski so von der obigen
-zu der ursprünglichen Dedekindschen Definition, während der umgekehrte Übergang
-das Auswahlpostulat erfordert. Dedekind glaubte -- im Vorwort zur 2. Auflage von
-\textit{\glqq Was sind und was sollen die Zahlen?\grqq{}} -- dass der Nachweis
-der Übereinstimmung der Definitionen die volle dort entwickelte Theorie erfordere.
-
-Wie er sich den Übergang im einzelnen gedacht hatte, zeigt die folgende Stelle
-aus einem Brief an H. Weber:
-\begin{quote}
-\glqq Die kürzeste Charakterisierung des Endlichen und Unendlichen ist, wie ich
-glaube, diejenige, welche ich am 9. März 1889 gefunden und in dem Vorwort (S. XI)
-zur zweiten Auflage (1893) der Schrift \textit{\glqq Was sind und was sollen die
-Zahlen?\grqq{}} mitgeteilt habe. Ich spreche sie so aus: \glq Ein System $S$ heißt
-endlich, wenn es eine Abbildung von $S$ in sich selbst gibt, durch welche kein
-echter Teil von $S$ in sich selbst abgebildet wird; im entgegengesetzten Falle
-heißt $S$ ein unendliches System\grq{}.
-
-\hspace{12pt} Nimmt man aber an, dass man die natürliche Zahlenreihe und ihre
-Gesetze schon vollständig kennt, und
-\end{quote}
-
-\newpage
-
-\begin{quote}
-ersetzt man im vorstehenden das Wort \glq heißt\grq{} durch das Wort \glq ist\grq{},
-so verwandelt sich diese Definition in einen Satz, der sich so beweisen lässt:
-
-\hspace{12pt} Es sei $\phi$ eine Abbildung eines Systems $S$ in sich selbst, durch
-welche kein echter Teil von $S$ in sich selbst abgebildet wird. Das Bild eines
-Elementes $a$ oder eines Teiles $A$ von $S$ bezeichne ich mit $a\phi$ oder $A\phi$
-(viel natürlicher als $\phi(a)$ oder $\phi(A)$). Ist $a$ irgendein Element von $S$,
-so sind auch alle Bilder Elemente von $S$, also ist auch das System $A$ aller dieser
-Bilder ein Teil von $S$,
-\[
-	a\phi, a\phi^2= (a\phi)\phi \ldots, a\phi^{n+1} = (a\phi^n)\phi \ldots
-\]
-und da $A\phi$ das System aller Bilder also ein Teil von $A$ ist,
-\[
-	(a\phi) \phi = a\phi^2, (a\phi^2)\phi = a\phi^3,
-\]
-so wird $A$ durch $\phi$ in sich selbst abgebildet; und folglich ist $A = S$.
-Mithin ist $a$ auch Element von $A$,  es gibt also eine kleinste natürliche Zahl
-$n$, die der Bedingung%
-\[
-	a\phi^n = a
-\]
-genügt. Dann ist $S$ das System der $n$ Elemente
-\[
-	a\phi,a\phi^2,\ldots a\phi^n
-\]
-und diese sind voneinander verschieden. Denn zufolge der Definition von $n$ ist das
-letzte Element verschieden von allen vorhergehenden. Wäre ferner $1 \leq r<s < n$%
-\[
-	a\phi^r = a\phi^s
-\]
-so wäre
-\[
-	(a\phi^r)\phi^{n-s} = (a\phi^s) \phi^{n-s}
-\]
-also
-\[
-	a\phi^{r+n-s} = a\phi^n = a
-\]
-obgleich $1 < r + n - s < n$. Dass endlich $S$ keine anderen als diese $n$ Elemente
-enthält, folgt aus $a\phi^{m + n} = a\phi^m$. Also ist wirklich $S$ ein endliches
-System (im üblichen Sinne), und zugleich ergibt sich, dass $\phi$ eine zyklische
-Permutation der $n$ Elemente von $S$, also auch eine ähnliche (d. h. eindeutig
-umkehrbare) Abbildung ist.
-
-\hspace{12pt} Umgekehrt, besteht ein (im üblichen Sinne) endliches System $S$ aus
-$n$ verschiedenen Elementen
-\[
-	a_1, a_2 \ldots a_{n-1}, a_n
-\]
-und definiert man eine Abbildung $\phi$ von $S$ durch
-\[
-    a_n\phi = a_1, a_r\phi = a_{r+1}
-\]
-für $1 \leq r < n$, so ist $S' = S$, also $\phi$ eine Abbildung von $S$ in sich
-selbst, und man zeigt leicht, dass kein echter Teil von $S$ in sich selbst
-abgebildet wird. Denn wenn ein Teil $A$ von $S$ durch $\phi$ in sich selbst
-abgebildet wird und ein Element $a$ enthält, so muss $A$ auch alle Elemente
-$a\phi, a\phi^2, a\phi^3, \ldots\ $, also alle Elemente von $S$ enthalten,
-mithin $= S$ sein. W.z.b.w.\grqq{}
-\end{quote}
-
-\vspace{-20pt} \begin{flushright} \textbf{Noether.}\end{flushright}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-\switchcolumn
 \selectlanguage{english}
 
 % \marginpar{\textit{What are numbers, and what is their purpose?}}%
@@ -734,11 +521,11 @@ of the elements $a, b, c, \ldots$ is denoted by $[a, b, c, \ldots]$.
 
 This gives
 \begin{equation}\label{eq1}
-				S' \partof S
+                S' \partof S
 \end{equation}
 and % \marginpar{\textit{The definition of finiteness.}}
 \begin{equation}\label{eq2}
-		\text{from } A' \partof A \text{ it follows that } A = S.
+        \text{from } A' \partof A \text{ it follows that } A = S.
 \end{equation}
 
 \begin{satz}\label{thm1}$S' = S$.
@@ -768,7 +555,7 @@ satisfies the following two conditions:
 \begin{enumerate}[I.]
 \item $s$ is element of $H_s$, so $[s] \partof H_s$, also
 \[
-	[s] + H_s = H_s.
+    [s] + H_s = H_s.
 \]
 \item If $h$ is an element of $H_s$ different from $s$, then $h'$ is also an
 element of $H_s$. So if $H \partof H_s$, but $s$ is \emph{not contained} in H,
@@ -803,8 +590,8 @@ $H_s$, while the element $s'$ of $H'_s$ by \sref{thm5} lies outside $H_s$.
 \begin{satz}\label{thm7}
 Every system $H'_s$ is a system $H_{s'}$, that is (by definition 3.):
 \begin{enumerate}[I'.]
-	\item $s'$ is element of $H'_s$
-	\item If $k$ is an element of $H'_s$ that is different from $s'$, then $k'$
+    \item $s'$ is element of $H'_s$
+    \item If $k$ is an element of $H'_s$ that is different from $s'$, then $k'$
     also lies in $H'_s$.
 \end{enumerate}
 \beweis
@@ -883,7 +670,7 @@ contains the element $c$.
 \begin{satz}\label{thm17}
 If $A + B$ means the system composed of $A, B$, then one has
 \[
-	a'b + b'a = S.
+    a'b + b'a = S.
 \]%
 \beweis
 Because if $s$ is an element of $a'b$, then $s'$ is contained in $b'a$ or $a'b$,
@@ -901,7 +688,7 @@ of $ab$ (by \sref{thm10}, \sref{thm11}), and consequently (by \sref{thm16})
 $a'b \partof ab$; since furthermore, by \sref{thm10}, we also have $[a]
 \partof ab$, therefore
 \[
-	[a] + a'b \partof ab.
+    [a] + a'b \partof ab.
 \]
 Also, every element $s$ of $[a] + a'b$ that is different from $b$ is either
 $= a$ or an element of $a'b$ that is different from $b$. Thus in both cases $s'$
@@ -910,7 +697,7 @@ $[a]+ a'b$, and since by \sref{thm11}) also $[b] \partof [a] + a'b$, it follows
 that $[a] + a'b$ is a system $H_b$. Finally, since $[a] \partof [a] + a'b$, by
 \sref{thm12} also
 \[
-	ab \partof [a] + a' b.
+    ab \partof [a] + a' b.
 \]
 The theorem follows from the comparison of both results.
 \end{satz}
@@ -1058,6 +845,298 @@ From $S=b'c+c'b$ we finally get $S=b'a+a'c+c'b$, which means our theorem is
 completely proven.
 \end{satz}
 
+\end{rightcolumn}
+
+\DoubleCaptionFig
+
+
+\begin{leftcolumn*}
+
+\selectlanguage{german}
+
+
+\begin{zusatz}\label{zusatz2}
+Es kann nie gleichzeitig $[a] \TeilVon cb$ und $[b] \TeilVon ca$ sein;
+weil (nach \sref{gthm18}) dann auch gleichzeitig $[a] \TeilVon c'b$ und
+$[b] \TeilVon c'a$  sein müsste, was unmöglich.
+\end{zusatz}
+
+\begin{satz}\label{gthm26}
+Aus $ab = cb$ folgt $a = c$, und wenn $ab = cd$ ein echter Teil von $S$ ist,
+so ist $a = c$, $b = d$.
+\Beweis
+Dies folgt schon aus früheren Sätzen. Da (nach \sref{gthm10}) $c$ in $cb$, also
+auch in $ab$ liegt, so muss, falls $a = b$, also $ab = [a]$ ist, auch $c = a$ sein.
+Ist aber $a$ verschieden von $b$, so ist (nach \sref{gthm18}) $ab = [a] + a'b$, und
+(nach \sref{gthm19}) $a'b$ ist echter Teil von $ab$; nimmt man an, es sei $c$
+verschieden von $a$, so muss $c$ in $a'b$ liegen, also ist (nach \sref{gthm16})
+$cb \TeilVon a'b$, also $cb$ echter Teil von $ab$; da aber $cb = ab$ ist, so ist
+diese Annahme unzulässig, mithin immer $c = a$, w.z.b.w.
+
+Ist ferner $ab = cd$ ein echter Teil von $S$, so muss $b = d$ sein; ist nämlich
+$b$ verschieden von $d$, so muss (\sref{gthm11}) auch $b'$ in $cd$, also auch in
+$ab$ liegen; dann wäre aber (\sref{gthm14}) $ab = S$ gegen die Voraussetzung,
+also ist $b = d$, mithin $ ab = cb$, also auch $a = c$, w.z.b.w.
+\end{satz}
+
+\begin{satz}\label{gthm27}
+Jedes (in \sref{gdef3} erklärte) System $H_s$, ist eine Strecke $a's$ mit dem
+Ende $s$ und ihr Anfang $a'$ ist völlig bestimmt.
+\Beweis
+Ist $H_s= S$, so ist $H_s= s's$ (nach \sref{gthm15}). Ist $H_s$ aber echter Teil
+von $S$, so sei $A$ das System aller außerhalb $H_s$ liegenden Elemente von $S$,
+also $S = A + H_s$. Da $A$ echter Teil von $S$ ist, so kann nicht $A' \TeilVon A$
+sein, es gibt also gewiss ein Element $a$ in $A$, dessen Bild $a'$ außerhalb $A$,
+also in $H_s$ liegt; da (nach \sref{gthm12}) folglich $a's \TeilVon H_s$ ist, so
+haben $a's$, $A$ kein gemeinsames Element.
+
+Da $a$ in  $A$, $s$ in $H_s$ (sogar in $a's$) liegt, so sind $a$, $s$ verschieden,
+also haben (nach \sref{gthm20}) die Strecken $a's$, $s'a$ kein gemeinsames
+\newpage
+\noindent Element, und (nach \sref{gthm17}) ist  $a's + s'a = S = H_s + A$, mithin $A \TeilVon s'a$.
+Nimmt man nun an, es sei $a's$ ein echter Teil von $H_s$, und bezeichnet mit $H$ das System aller derjenigen Elemente von $H_s$, welche außerhalb $a's$, also in
+$s'a$, so ist $H_s = H + a's$, und $s'a = H + A$, also ist $H = H_s - s'a$ der
+Durchschnitt der Systeme $H_s$, $s'a$.
+
+Da nun weder $s$ noch $a$ in $H$ liegt, so folgt aus $H \TeilVon H_s$, und
+$H \TeilVon s'a$ (nach \sref{gdef3} und \sref{gthm11}), dass auch $H' \TeilVon H_s$
+und $H' \TeilVon s'a$, also auch $H' \TeilVon H$, mithin $H = S$ ist. Dies ist
+aber unmöglich, weil $s$ (und ebenso $a$) außerhalb $H$ liegt. Mithin ist gewiss
+$H_s= a's$, und $A = s'a$, w.z.b.w.
+\end{satz}
+
+
+\begin{satz}\label{gthm28}
+Der Durchschnitt von solchen Strecken $as$, $bs$, $\ldots$ welche dasselbe Ende
+$s$ haben, ist selbst eine solche Strecke $hs$, und ihr Anfang $h$ ist
+vollständig bestimmt.
+\Beweis
+Denn jede solche Strecke ist (nach \sref{gthm11}) ein System $H_s$, und (nach \sref{gthm8})
+gilt dasselbe von ihrem Durchschnitt, woraus der Satz (nach \sref{gthm27}) folgt.
+\end{satz}
+
+\begin{zusatz}\label{zusatz3}
+Der Durchschnitt der Strecken $as$, $bs$, $cs$, ... ist selbst eine dieser Strecken.
+\end{zusatz}
+
+Zum Beweise schicke man folgenden Hilfssatz voraus:
+
+\begin{hilfssatz}\label{hilfssatz1}
+Ist $hs$ echter Teil von $as$, und $k$ das Element, dessen Bild $k' = h$ ist,
+so ist $hs$ auch echter Teil von $ks$, und zugleich ist $ks \TeilVon as$.
+\Beweis
+Wäre $k = s$, so wäre $hs = s's = S$, während doch $hs$ echter Teil von $as$,
+also auch von $S$ ist. Da also $k$ verschieden von $s$ ist, so ist (nach \sref{gthm18})
+$ks = [k] + hs$ und (nach \sref{gthm19}) $k$ nicht in $hs$ enthalten, also $hs$
+echter Teil von $ks$. Da $hs$ echter Teil von $as$ ist, so sei $as = M + hs$,
+wo $M$ das System aller Elemente $m$ von $as$, die außerhalb $hs$ liegen und
+also auch von $s$ verschieden sind. Daraus folgt $M' \TeilVon as$, und da
+offenbar $M'$ nicht Teil von $M$ sein kann (weil $M$ nicht $= S$ ist), so
+muss es in $M$ ein Element $m$ geben, dessen Bild $m'$ außerhalb $M$, also
+in $hs$ liegt, woraus $m's \TeilVon hs$ folgt.
+\end{hilfssatz}
+
+\begin{quote}
+[\emph{Der Beweis ist offenbar unvollständig. Ein Beweis des Hilfssatzes ergibt
+sich nach Mitteilung von J. Cavaillès direkt aus \sref{gthm25}, indem man die
+dortigen $a$, $b$, $c$ durch $a$, $k$, $s$ ersetzt.
+Der Zusatz folgt aus \sref{gthm28} und dem Hilfssatz. E. N.
+}] \end{quote}
+
+\begin{satz}\label{gthm29}
+Ist $T$ ein Teil von $S$, und $s$ ein Element von $S$, so gibt es in $S$ immer ein
+und nur ein zugehöriges Element $s_1$, welches die beiden folgenden Eigenschaften hat:
+\begin{enumerate} \setcounter{enumi}{0} \setlength\itemsep{-0.25em}
+   \item  Wenn $a$ der Bedingung $T \TeilVon as$ genügt, so ist $s_1s \TeilVon as$.
+   \item $T \TeilVon s_1s$.
+\end{enumerate}
+Hieraus folgen die beiden Eigenschaften: \newpage
+\begin{enumerate} \setcounter{enumi}{2} \setlength\itemsep{-0.25em}
+    \item $s_1$ liegt in $T$.
+    \item Die Strecke $ss_1$ enthält kein von $s$ und $s_1$ verschiedenes Element von $T$.
+\end{enumerate}
+\beweis
+Da $s's = S$, also $T \TeilVon s's$ ist (\sref{gthm15}), so gibt es mindestens
+ein Element $a$, das der Bedingung $T$ as genügt. Ist $A$ das System aller dieser
+Elemente $a$, so ist (nach \sref{gthm28}) der Durchschnitt aller ihnen entsprechenden
+Strecken eine Strecke $s_1s$, wo $s_1$ ein völlig bestimmtes Element von $S$ ist.
+Nach dem Begriffe eines Durchschnitts hat $s_1$ die Eigenschaft 1.\, aber auch die
+Eigenschaft 2.\, weil $T$ ein gemeinsamer Teil aller $as$, mithin auch Teil ihres
+Durchschnitts $s_1s$ ist. Ist $s_1 = s$, also $s_1s = ss = [s]$, so folgt aus 2.\,
+dass $T$ aus dem einzigen Elemente $s$ besteht; und umgekehrt, wenn $s$ in $T$
+liegt und das einzige Element von $T$ ist, so ist $T = [s] = ss]$, also nach 1.\
+auch $s_1s \TeilVon ss$, mithin $s_1 = s$; in diesem Falle hat daher $s_1$ die
+Eigenschaft 3.\ und offenbar auch die Eigenschaft 4. Ist aber $s_1$ verschieden
+von $s$, so ist (nach \sref{gthm18}) $s_1s = [s_1] + (s_1)'s$.
+
+Nimmt man nun an, $s_1$ liege außerhalb $T$, es sei also jedes Element von $T$
+verschieden von $s_1$, so folgt aus 2.\ auch $T \TeilVon (s_1)'s$, und hieraus
+nach 1.\ auch $ss_1 \TeilVon (s_1)'s$, was aber unmöglich ist, weil das (nach
+\sref{gthm10}) in $s_1s$ liegende Element $s_1$ (nach \sref{gthm19}) außerhalb
+$(s_1)'s$ liegt. Mithin ist unsere Annahme unzulässig, d. h.  $s_1$  hat die
+Eigenschaft 3.
+
+Wir betrachten nun die Strecke $ss_1$; besitzt sie ein von $s$ und $s_1$
+verschiedenes Element $u$, so ist auch $s$ verschieden von $s_1$ (weil sonst
+$ss_1 = [s]$, also auch $u = s$ wäre), und (nach \sref{gthm18}) $ss_1 = [s] + ss_1$;
+mithin liegt $u$ in $s's_1$, also (nach \sref{gthm19}) außerhalb $(s_1)'s$, und
+da (wie oben) $s_1s = [s_1] + (s_1)'s$, und $u$ auch von $s_1$ verschieden ist, so
+liegt $u$ auch außerhalb  $s_1s$, also zufolge 2. auch außerhalb $T'$, d. h. $s_1$
+hat auch die Eigenschaft 4.
+\end{satz}
+
+\noindent \textbf{30.}\label{gthm30} \emph{Abbildung von $S$ nach $T$.}
+Durch \sref{gthm29} ist eine Abbildung $\psi$ von $S$ in $T$ hergestellt, welche
+dadurch definiert wird, dass jedes Element $s$ von $S$ durch $\psi$ in das dort
+erklärte, (nach \sref{gdef3}) in $T$ liegende Element $s_1$ übergeht. Ist dann
+$A$ irgend ein Teil von $S$, so soll $A_1$ das zugehörige Bild von $A$ (d. h.
+das System der Bilder aller Elemente $a_1$ von $A$) bedeuten. Es ist also
+$S_1 \TeilVon T$, also auch $T_1 \TeilVon T$, d. h. $T$ wird durch $\psi$ in sich
+selbst abgebildet.
+
+\stepcounter{satz}
+\begin{satz}\label{gthm31}
+Diese Abbildung $\psi$ von $T$ in sich selbst ist eine ähnliche, d. h. sind $a$, $b$
+verschiedene Elemente von $T$, so sind auch deren Bilder $a_1$, $b_1$ verschieden.
+\Beweis
+Nach \sref{gthm29} ist $T \TeilVon a_1a$ und $T \TeilVon b_1b$. Da nun $a$, $b$
+Elemente von $T$ sind, so ist auch $[a] \TeilVon b_1b$, $[b] \TeilVon a_1a$. Wäre
+nun, obgleich $a$, $b$ verschieden sind, doch $a_1 = b_1 = c$, so wäre
+$[a] \TeilVon cb$, $[b] \TeilVon ca$. Da aber $c$ von $a$ und $b$ verschieden
+ist (weil sonst auch $a = b$ wäre), so ist dies (nach Zusatz zu \sref{gthm25})
+unmöglich. Mithin sind $a_1$, $b_1$ verschieden, w.z.b.w.
+\end{satz}
+
+\newpage
+
+\hspace{64pt}
+
+
+\begin{center}
+{\Large\textbf{Erläuterungen zur vorstehenden Abhandlung}}
+\end{center}
+
+
+\bigskip
+
+
+Die hier gegebene Definition des Endlichen ist chronologisch die erste, die die
+Ableitung aller Eigenschaften ohne Heranziehung des Auswahlaxioms ermöglicht --
+eine Tatsache, die Dedekind wohl noch nicht bewusst war.
+
+Er selbst zieht nur die ersten Folgerungen; auf diesem Weg lässt sich aus seinem
+letzten Satz noch folgern, dass jede Untermenge einer endlichen Menge endlich ist,
+und es lässt sich das Prinzip der vollständigen Induktion beweisen und damit zu
+der ursprünglichen Dedekindschen Definition übergehen (vgl. eine demnächst, Fund.
+Math.\ \textbf{19}, erscheinende Note von J. Cavaillès).
+
+Einen vergleichenden Überblick über die verschiedenen Definitionen des Endlichen
+gibt A. Tarski (\emph{Sur les ensembles finis}, Fund. Math.\ \textbf{6}), dessen
+eigene Definition so lautet: Eine Menge heißt endlich, wenn in jedem System von
+Untermengen mindestens eine im System minimale enthalten ist. Gleichbedeutend mit
+dieser Minimalbedingung -- durch Übergang zur Komplementärmenge -- ist die
+entsprechende Maximalbedingung; aus beiden folgen alle Eigenschaften der endlichen
+Mengen ohne Heranziehung des Auswahlpostulats.
+
+Dass die obige Definition von Dedekind mit der Minimalbedingung äquivalent ist,
+folgert Tarski aus der auch bei Dedekind in einer anderen Fassung auftretenden
+Relation: $ab' \TeilVon ab + [b']$. Insbesondere gelangt Tarski so von der obigen
+zu der ursprünglichen Dedekindschen Definition, während der umgekehrte Übergang
+das Auswahlpostulat erfordert. Dedekind glaubte -- im Vorwort zur 2. Auflage von
+\textit{\glqq Was sind und was sollen die Zahlen?\grqq{}} -- dass der Nachweis
+der Übereinstimmung der Definitionen die volle dort entwickelte Theorie erfordere.
+
+Wie er sich den Übergang im einzelnen gedacht hatte, zeigt die folgende Stelle
+aus einem Brief an H. Weber:
+\begin{quote}
+\glqq Die kürzeste Charakterisierung des Endlichen und Unendlichen ist, wie ich
+glaube, diejenige, welche ich am 9. März 1889 gefunden und in dem Vorwort (S. XI)
+zur zweiten Auflage (1893) der Schrift \textit{\glqq Was sind und was sollen die
+Zahlen?\grqq{}} mitgeteilt habe. Ich spreche sie so aus: \glq Ein System $S$ heißt
+endlich, wenn es eine Abbildung von $S$ in sich selbst gibt, durch welche kein
+echter Teil von $S$ in sich selbst abgebildet wird; im entgegengesetzten Falle
+heißt $S$ ein unendliches System\grq{}.
+
+\hspace{12pt} Nimmt man aber an, dass man die natürliche Zahlenreihe und ihre
+Gesetze schon vollständig kennt, und
+\end{quote}
+
+\newpage
+
+\begin{quote}
+ersetzt man im vorstehenden das Wort \glq heißt\grq{} durch das Wort \glq ist\grq{},
+so verwandelt sich diese Definition in einen Satz, der sich so beweisen lässt:
+
+\hspace{12pt} Es sei $\phi$ eine Abbildung eines Systems $S$ in sich selbst, durch
+welche kein echter Teil von $S$ in sich selbst abgebildet wird. Das Bild eines
+Elementes $a$ oder eines Teiles $A$ von $S$ bezeichne ich mit $a\phi$ oder $A\phi$
+(viel natürlicher als $\phi(a)$ oder $\phi(A)$). Ist $a$ irgendein Element von $S$,
+so sind auch alle Bilder Elemente von $S$, also ist auch das System $A$ aller dieser
+Bilder ein Teil von $S$,
+\[
+	a\phi, a\phi^2= (a\phi)\phi \ldots, a\phi^{n+1} = (a\phi^n)\phi \ldots
+\]
+und da $A\phi$ das System aller Bilder also ein Teil von $A$ ist,
+\[
+	(a\phi) \phi = a\phi^2, (a\phi^2)\phi = a\phi^3,
+\]
+so wird $A$ durch $\phi$ in sich selbst abgebildet; und folglich ist $A = S$.
+Mithin ist $a$ auch Element von $A$,  es gibt also eine kleinste natürliche Zahl
+$n$, die der Bedingung%
+\[
+	a\phi^n = a
+\]
+genügt. Dann ist $S$ das System der $n$ Elemente
+\[
+	a\phi,a\phi^2,\ldots a\phi^n
+\]
+und diese sind voneinander verschieden. Denn zufolge der Definition von $n$ ist das
+letzte Element verschieden von allen vorhergehenden. Wäre ferner $1 \leq r<s < n$%
+\[
+	a\phi^r = a\phi^s
+\]
+so wäre
+\[
+	(a\phi^r)\phi^{n-s} = (a\phi^s) \phi^{n-s}
+\]
+also
+\[
+	a\phi^{r+n-s} = a\phi^n = a
+\]
+obgleich $1 < r + n - s < n$. Dass endlich $S$ keine anderen als diese $n$ Elemente
+enthält, folgt aus $a\phi^{m + n} = a\phi^m$. Also ist wirklich $S$ ein endliches
+System (im üblichen Sinne), und zugleich ergibt sich, dass $\phi$ eine zyklische
+Permutation der $n$ Elemente von $S$, also auch eine ähnliche (d. h. eindeutig
+umkehrbare) Abbildung ist.
+
+\hspace{12pt} Umgekehrt, besteht ein (im üblichen Sinne) endliches System $S$ aus
+$n$ verschiedenen Elementen
+\[
+	a_1, a_2 \ldots a_{n-1}, a_n
+\]
+und definiert man eine Abbildung $\phi$ von $S$ durch
+\[
+    a_n\phi = a_1, a_r\phi = a_{r+1}
+\]
+für $1 \leq r < n$, so ist $S' = S$, also $\phi$ eine Abbildung von $S$ in sich
+selbst, und man zeigt leicht, dass kein echter Teil von $S$ in sich selbst
+abgebildet wird. Denn wenn ein Teil $A$ von $S$ durch $\phi$ in sich selbst
+abgebildet wird und ein Element $a$ enthält, so muss $A$ auch alle Elemente
+$a\phi, a\phi^2, a\phi^3, \ldots\ $, also alle Elemente von $S$ enthalten,
+mithin $= S$ sein. W.z.b.w.\grqq{}
+\end{quote}
+
+\vspace{-20pt} \begin{flushright} \textbf{Noether.}\end{flushright}
+
+\end{leftcolumn*}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+% \switchcolumn
+
+\begin{rightcolumn}
+\selectlanguage{english}
+
 \begin{zusatz}
 It can never be that $[a] \partof cb$ and $[b] \partof ca$ at the same time;
 because (according to \sref{thm18}) then $[a] \partof c'b$ and $[b] \partof c'a$
@@ -1094,10 +1173,13 @@ image $a'$ lies outside $A$, hence in $H_s$. Since (according to \sref{thm12})
 $a's \partof H_s$, then $a's$ and $A$ have no common element.
 
 Since $a$ is in $A$, $s$ is in $H_s$ (even in $a's$), then $a$ and $s$ are
-different, so (by \sref{thm20}) the segments $a's$, $s'a$ have no common element,
+different, so (by \sref{thm20}) the segments $a's$, $s'a$ have no common  \newpage
+
+\noindent element, 
 and (by \sref{thm17}) $a's+  s'a=S=H_s+ A,$ therefore $A \partof s'a$.
 If one now assumes that $a's$ is a proper part of $H_s$, and $H$ denotes the
-system of all those elements of $H_s$ which are outside $a's$, i.e., in $s'a$,
+system 
+ of all those elements of $H_s$ which are outside $a's$, i.e., in $s'a$,
 then $H_s = H+a's$, and $s'a = H + A$, so $H=H_s-s'a$ is the intersection of the
 systems $H_s$, $s'a$.
 
@@ -1108,7 +1190,7 @@ impossible because $s$ (and also $a$) lies outside $H$. Therefore certainly
 $H_s = a's$, and $A = s'a$, qed.
 \end{satz}
 
-\newpage
+
 
 \begin{satz}\label{thm28}
 The intersection of such segments $as, bs, \ldots$ which have the same end $s$ is
@@ -1156,7 +1238,7 @@ one and only one associated element $s_1$, which has the following two propertie
   \item If $a$ satisfies the condition $T \partof as$, then $s_1s \partof as$.
   \item $T \partof s_1s$.
 \end{enumerate}
-From this follow the two properties:
+From this follow the two properties:\newpage
 \begin{enumerate} \setcounter{enumi}{2} \setlength\itemsep{-0.25em}
   \item $s_1$ is in $T$.
   \item the segment $ss_1$ contains no element of $T$ that is different from $s$ and $s_1$.
@@ -1333,6 +1415,7 @@ all elements of $S$, and therefore be $= S$. Qed.''
 
 \begin{flushright}\textbf{Noether.}\end{flushright}
 
+\end{rightcolumn}
 \end{paracol}
 
 \end{document}
