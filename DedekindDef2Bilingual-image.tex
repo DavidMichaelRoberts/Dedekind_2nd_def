@@ -2,11 +2,14 @@
 \usepackage[german,english]{babel}
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{xcolor,hyperref}
+\usepackage{graphicx} % For including graphics (e.g., ORCID logo)
 \usepackage{enumerate}
 \usepackage{microtype}
 \usepackage{ragged2e}
 \usepackage{titling}
 \usepackage{url}
+\usepackage{comment}
+\usepackage{orcidlink}
 
 \linespread{1.25}
 
@@ -69,7 +72,7 @@
 % \markright{Dedekind, Second definition of the finite and infinite\hfill}
 
 % \usepackage[landscape, total={8in, 8in}]{geometry}
-\usepackage[total={8in, 10in}]{geometry}
+\usepackage[margin=1in]{geometry} % default wide margins for single‐column pages
 
 % \usepackage{showframe}
 % \setcounter{page}{451}
@@ -170,10 +173,11 @@ However Dedekind had in fact worked out, as far as his naive set theory framewor
 
 The ``entirely different definition of the finite and the infinite'' is the subject of the notes translated below, which to my knowledge have only appeared in Dedekind's collected works \cite[Vol.~3, page~450]{Dedekind_Werke} edited by Robert Fricke, Emmy Noether and \O ystein Ore, in the original German. 
 
-The note is followed by a short editorial commentary by Noether, and she cites the then-forthcoming note \cite{Cavailes_32} Jean Cavaill\`es that (I believe) fills in a gap in the proof given by Dedekind (Noether and Cavaill\`es would go on to co-edit the Cantor--Dedekind correspondence, published after Noether's death). 
+The note is followed by a short editorial commentary by Noether, and she cites the then-forthcoming note \cite{Cavailes_32} by Jean Cavaill\`es that fills in a gap in Dedekind's proof of the Lemma for Theorem 28 (Noether and Cavaill\`es would go on to co-edit the Cantor--Dedekind correspondence, published after Noether's death). 
+Cavaill\`es notes that while the Lemma proves an inclusion in one direction, it doesn't 
 Noether also includes quote from a letter Dedekind wrote to Weber on the matter.
 
-Refernce Kuratowski
+Reference Kuratowski
 
 
 %%%%%%
@@ -187,7 +191,8 @@ In contrast the more famous Dedekind finiteness is a \emph{negative} one ($\not\
 And the notion of `finite set' according to this new definition do line up with the classical definitions, as follows.
 
 
-The following argument is based on communicated to me by Jason Carr\footnote{[ORCID]}, using the following rephrasing of Dedekind's definition: A set $S$ is \emph{D2-finite} if there is an endomorphism $f$ of $S$ such that if $U\subseteq S$ is stable under $f$, and $\exists x \in U$, then $U=S$. 
+% Place the orcid_logo.png file in the document directory for the ORCID icon below.
+The following argument is based on one communicated to me by Jason Carr~\orcidlink{0009-0000-7254-9607}, using the following rephrasing of Dedekind's definition: A set $S$ is \emph{D2-finite} if there is an endomorphism $f$ of $S$ such that if $U\subseteq S$ is stable under $f$, and $\exists x \in U$, then $U=S$. 
 It's clear that any set that is in bijection with $\underline{k}:=\{1,\ldots k\}$ (i.e. a classically finite set) satisfies this definition, because we can take $f$ to be $n\mapsto n+1\pmod{k}$. But we can also show that D2-finiteness of $S$ implies $S$ is classically finite.
 
 An empty set is both D2-finite and classically finite, so we only consider the case that the set $S$ has a specified element.
@@ -198,10 +203,8 @@ But $U_0$ was arbitrary, so we could take it to be $U_0=\{x\}$ for some $x\in S$
 As a result, the function $c\colon \mathbb{N}\to S$, $c(i) = f^i(x)$ and $c(0)=x$ is surjective.
 Now consider $U_0 = \{c(1)\}$, so that there exists some $m$ such that $x=f^m(c(1)) = f^{m+1}(x)$.
 Thus $c$ factors through the quotient map $\mathbb{N}\twoheadrightarrow \underline{m+1}$, to give a surjection $c'\colon \underline{m+1}\to S$, making $S$ the quotient of a classically finite set, what is called `K-finite' in the constructive mathematics literature. 
-Such a set is classically finite in classical logic, but we can observe that the above proof (CHECK!) is actually constructively valid. 
-Thus even in constructive mathematics an inhabited D2-finite set is (inhabited and) K-finite, and the ???converse is also true: consider $c\colon \underline{m+1}\twoheadrightarrow S$, and the function $\widetilde{f}\colon \underline{m+1} \stackrel{+1}{\to} \underline{m+1} \stackrel{c}{\twoheadrightarrow} S$. Let $k,\ell\in \underline{m+1}$ such that $c(k)=c(\ell)$. 
-
-[[I want this function to descend to an endomorphism of $S$. Need: $c(k+1) = c(\ell+1)$]]
+Such a set is classically finite in classical logic, but we can observe that the above proof is actually constructively valid. 
+Thus even in constructive mathematics an inhabited D2-finite set is (inhabited and) K-finite.
 
 
 Choice-sensitive readers will notice that the Axiom of Choice was not used in the argument, as is highlighted by Noether in her commentary, so that a `Dedekind-style' definition of finiteness can be used in place of the classical definition, without, as Dedekind says ``without recourse to the natural numbers.''
@@ -220,10 +223,13 @@ I thank Jason Carr for discussion about the equivalence between Dedekind's defin
 \bibliography{refs}
 
 \newpage
+\newgeometry{total={8in,10in}}
 
 \title{Zweite Definition (1889.3.9) des Endlichen und Unendlichen.}
 
 \maketitle
+
+% switch to narrower layout for two‐column pages
 
 \begin{paracol}{2} % specify two columns...
     \begin{leftcolumn}
@@ -734,7 +740,7 @@ contains the element $c$.
 \end{satz}
 
 \begin{satz}\label{thm17}
-If $A + B$ means the system composed of $A, B$, then one has
+If $A + B$ means the system composed of $A$ and $B$, then one has
 \[
 	a'b + b'a = S.
 \]%
@@ -851,7 +857,7 @@ If you put (as in the following \sref{thm25}):
 \[
     A = c'b,\ B = a'c,\ C = b'a;\  A_1 = b'c,\ B_1 = c'a,\ C_1 = a'b,
 \]
-then $A - B - C = 0$ (empty) (the symbol $-$ denotes intersection) and
+then $A - B - C = 0$ (empty) (here the symbol $-$ means intersection) and
 $A_1 - B_1 - C_1 = 0$ (empty) and (according to \sref{thm17}, \sref{thm20}) hence
 \begin{gather*}
     S = A + A = B + B_1 = C + C_1; \\
@@ -1251,7 +1257,7 @@ Every system $H_s$ (defined in \sref{def3}) is a segment $a's$ with the end $s$
 and its beginning $a'$ completely determined.
 \Beweis
 If $H_s= S$, then $H_s= s's$ (according to \sref{thm15}).
-But if $H_s$ is a proper part of $S$, then $A$ is the system of all elements
+But if $H_s$ is a proper part of $S$, then let $A$ be the system of all elements
 of $S$ that lie outside $H_s$, so $S=A+H_s$. Since $A$ is a proper part of $S$,
 then $A' \partof A$ cannot be, so there is certainly an element $a$ in $A$, whose
 image $a'$ lies outside $A$, hence in $H_s$. Since (according to \sref{thm12})
@@ -1263,7 +1269,7 @@ and (by \sref{thm17}) $a's+  s'a=S=H_s+ A,$ therefore $A \partof s'a$.
 If one now assumes that $a's$ is a proper part of $H_s$, and $H$ denotes the
 system of all those elements of $H_s$ which are outside $a's$, i.e., in $s'a$,
 then $H_s = H+a's$, and $s'a = H + A$, so $H=H_s-s'a$ is the intersection of the
-systems $H_s$, $s'a$.
+systems $H_s$ and $s'a$.
 
 Since neither $s$ nor $a$ lies in $H$, it follows from $H \partof H_s$, and
 $H \partof s'a$ (according to \sref{def3} and \sref{thm11}) that $H' \partof H_s$
@@ -1500,5 +1506,7 @@ all elements of $S$, and therefore be $= S$. Qed.''
 
 \end{rightcolumn}
 \end{paracol}
+% restore default margins for subsequent single‐column pages
+\restoregeometry
 
 \end{document}
