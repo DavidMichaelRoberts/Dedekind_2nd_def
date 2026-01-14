@@ -64,6 +64,8 @@
 \newcommand\Beweis{\medskip \newline $ \phantom{'.'} \rhd \ $}%
 \newcommand\beweis{ $ \phantom{'.'} \rhd \ $}%
 
+\newcommand{\QED}{Q.E.D.}
+
 % From https://narkive.com/P4sNM0k5:7.443.63
 \newcommand\TeilVon{\mathrel{\raisebox{0.45ex}{$\mathfrak{3}$}}}
 \newcommand{\partof}{\subseteq}
@@ -725,7 +727,7 @@ in $sb$, then $a$ must lie in $s'b$, and from this it follows (again according t
 Therefore, the image $a'$ of every element $a$ of $A$ is also contained in $A$,
 i.e. $A' \partof A$. But since $A=S$ would follow from this, while $A$ does not
 contain the element $b$, our assumption is inadmissible, so the theorem is true,
-qed.
+\QED
 The second part follows by exchanging $a$ with $b$.%
 \end{satz}
 
@@ -756,7 +758,7 @@ From $cb=S$ follows $c = b'$.
 \Beweis
 There is (according to \sref{thm1} and \sref{thm21}) in $S$ one and only one element
 $a$ which satisfies the condition $a'=c$, and therefore $a'b = S$, therefore
-$[a] \partof a'b$; therefore (by \sref{thm19}) $a=b$, thus $c=b'$, qed.%
+$[a] \partof a'b$; therefore (by \sref{thm19}) $a=b$, thus $c=b'$, \QED%
 \end{satz}
 
 \begin{satz}\label{thm23}
@@ -1176,12 +1178,12 @@ $a=b$, then $ab = [a]$, then must also $c=a$. But if $a$ is different from $b$,
 then (by \sref{thm18}) $ab = [a]+a'b$, and (by \sref{thm19}) $a'b$ is a proper
 part of $ab$. If one assumes that $c$ is different from $a$, then $c$ must lie
 in $a'b$, so (by \sref{thm16}) $cb \partof a'b$, i.e. $cb$ is a proper part of $ab$;
-But since $cb=ab$, this assumption is inadmissible, and therefore always $c=a$, qed.
+But since $cb=ab$, this assumption is inadmissible, and therefore always $c=a$, \QED
 
 Furthermore, if $ab=cd$ is a proper part of $S$, then $b=d$; If $b$ is different
 from $d$, then (by \sref{thm11}) $b'$ must also be in $cd$, and therefore also in
 $ab$; But then (by \sref{thm14}) would $ab = S$ violating the assumption, so $b=d$,
-therefore $ab=cb$, therefore also $a=c$, qed.
+therefore $ab=cb$, therefore also $a=c$, \QED
 \end{satz}
 
 \begin{satz}\label{thm27}
@@ -1207,7 +1209,7 @@ Since neither $s$ nor $a$ lies in $H$, it follows from $H \partof H_s$, and
 $H \partof s'a$ (according to \sref{def3} and \sref{thm11}) that $H' \partof H_s$
 and $H' \partof s'a$, therefore also $H' \partof H$, hence $H = S$. But this is
 impossible because $s$ (and also $a$) lies outside $H$. Therefore certainly
-$H_s = a's$, and $A = s'a$, qed.
+$H_s = a's$, and $A = s'a$, \QED
 \end{satz}
 
 
@@ -1309,7 +1311,7 @@ By \sref{thm29}, $T \partof a_1a$ and $T \partof b_1b$. Since $a, b$ are element
 of $T$, then $[a] \partof b_1b$, $[b] \partof a_1a$. If, although $a, b$ are
 different, $a_1 = b_1  = c$, so then $[a] \partof cb, [b] \partof c$. But since
 $c$ is different from $a$ and $b$ (because otherwise $a = b$), this is impossible
-(after the Corollary to \sref{thm25}). Therefore $a_1, b_1$ are different, qed.
+(after the Corollary to \sref{thm25}). Therefore $a_1, b_1$ are different, \QED
 \end{satz}
 
 \newpage
@@ -1431,7 +1433,7 @@ for $1\leq r<n$, then $S' = S$, so $\phi$ is a mapping from $S$ into itself, and
 one easily shows that no proper part of $S$ is mapped into itself. Because if
 a part $A$ of $S$ is mapped by $\phi$ into itself and contains an element $a$,
 then $A$ must also contain all elements $a\phi, a\phi^2, a\phi^3, \ldots \ $, i.e.,
-all elements of $S$, and therefore be $= S$. Qed.''\footnote{[\emph{cf Brief an Weber 11 Jan. 1906. \cite[p.299]{Dedekind-Weber-letters}.
+all elements of $S$, and therefore be $= S$. \QED''\footnote{[\emph{cf Brief an Weber 11 Jan. 1906. \cite[p.299]{Dedekind-Weber-letters}.
 The passage quoted by Noether is a splicing together of a part of the letter in \emph{ibid}.\ and the notes that Dedekind included (``I am enclosing a sheet with comments'') for Weber to use to improve his manuscript ``Elementare Mengenlehre. Natürliche Zahlen''}.
 ]}
 \end{quote}
