@@ -72,7 +72,7 @@
 % \markright{Dedekind, Second definition of the finite and infinite\hfill}
 
 % \usepackage[landscape, total={8in, 8in}]{geometry}
-\usepackage[margin=1in]{geometry} % default wide margins for single‐column pages
+\usepackage[margin=1.2in]{geometry} % default wide margins for single‐column pages
 
 % \usepackage{showframe}
 % \setcounter{page}{451}
@@ -137,95 +137,27 @@
 \begin{document}
 \hypersetup{pageanchor=false}
 
-\title{Second definition of the finite and infinite (1889.3.9)}
-\author{Richard Dedekind}
-\date{\phantom{} }
-% \maketitle
+% \title{Second definition of the finite and infinite (1889.3.9)}
+% \author{Richard Dedekind}
+% \date{\phantom{} }
+% % \maketitle
 
-\maketitle
-\thispagestyle{empty}
+% \maketitle
+% \thispagestyle{empty}
 
 %% CHANGE MARGINS FOR MY SECTION! THEY ARE TOO NARROW
-\begin{abstract}
-The current document aims to make better known another definition of finiteness introduced by Dedekind, in addition to his well-studied eponymous \emph{Dedekind finiteness}, by providing an English translation of the posthumously-published document that establishes the definition's consequences.
-    \end{abstract}
-
-The famous definition of a set being finite appears in the text of Dedekind's 1888 \emph{Was sind und was sollen die Zahlen} (henceforth [WZ]), but the second definition---dating to 1889---was only published as an aside in the foreword to the second edition in 1893, as a potential alternative:
-
-\begin{quote}
- For the benefit of those who are interested in and understand the difficulties of such an investigation, I add the following remark. We can lay down an entirely different definition of the finite and infinite, which appears still simpler since the notion of similarity of transformation [i.e.\ injectivity of a function] is not even assumed, viz.:
- \begin{quote}
- ``A system S is said to be finite when it may be so transformed in itself (36) that no proper part (6) of S is transformed in itself; in the contrary case S is called an infinite system.''
- \end{quote}
- Now let us attempt to erect our edifice upon this new foundation! 
- We shall soon meet with serious difficulties, and I believe myself warranted in saying that the proof of the perfect agreement of this definition with the former can be obtained only (and then easily) when we are permitted to assume the series of natural numbers as already developed and to make use of the final considerations in (131); and yet nothing is said of all these things in either the one definition or the other! 
- From this we can see how very great is the number of steps in thought needed for such a remodeling of a definition.
-\end{quote}
-
-Dedekind subsequently developed the consequences of his definition; the manuscript %https://mathstodon.xyz/@estruppi@sciences.re/112195178889922135) 
-refers to the 1893 edition of [WZ] in its first sentence. 
-It may well be he was hoping to working up a version for publication, but things never panned out; it seems this is unknown.
-At the very least Emmy-Lou Haffner has told me she does not think the manuscript was at the stage of being prepared for publication.
-
-Even in the 1911 third edition of [WZ] Dedekind makes no edits to the text, adding only another small preface acknowledging criticism of his non-mathematical `proof' of Theorem 66, defending the `inner harmony' of the logic of his monograph, and asking the reader's indulgence for not having made updates including a `rigorous examination of the creative power of the mind' due to other work. 
-So this second definition of finite set lay fallow for a couple of decades, as far as the public knew. 
-However Dedekind had in fact worked out, as far as his naive set theory framework allowed, the relationship between his second definition of finite set, and the notion of finiteness that is ``of cardinality a natural number''.
-
-The ``entirely different definition of the finite and the infinite'' is the subject of the notes translated below, which to my knowledge have only appeared in Dedekind's collected works \cite[Vol.~3, page~450]{Dedekind_Werke} edited by Robert Fricke, Emmy Noether and \O ystein Ore, in the original German. 
-
-The note is followed by a short editorial commentary by Noether, and she cites the then-forthcoming note \cite{Cavailes_32} by Jean Cavaill\`es that fills in a gap in Dedekind's proof of the Lemma for Theorem 28 (Noether and Cavaill\`es would go on to co-edit the Cantor--Dedekind correspondence, published after Noether's death). 
-Cavaill\`es notes that while the Lemma proves an inclusion in one direction, it doesn't 
-Noether also includes quote from a letter Dedekind wrote to Weber on the matter.
-
-Reference Kuratowski
+% \begin{abstract}
+% The current document aims to make better known another definition of finiteness introduced by Dedekind, in addition to his well-studied eponymous \emph{Dedekind finiteness}, by providing an English translation of the posthumously-published document that establishes the definition's consequences.
+%     \end{abstract}
 
 
-%%%%%%
-\bigskip
-
-The note was published in \cite{Dedekind_Werke}, and included a pointer to \cite{Cavailes_32}, which filled a small gap in one of the proofs (the Lemma for the Corollary to Theorem 28), as well as providing the theorem that induction works as expected.
-
-An interesting point to observe, aside from Dedekind's noting that the concept of injective mapping is not needed, is that this definition of finiteness is a \emph{positive} one ($\exists f$ such that [property holds]). 
-To be fair, the explicit statement given by Dedekind has a `no proper part' condition, but the condition can be rephrased as `if $U\subseteq S$ is stable under $f$, then $\exists x\in U \Rightarrow U=S$' (see below).
-In contrast the more famous Dedekind finiteness is a \emph{negative} one ($\not\exists f$ such that [property holds]) making the definition of `Dedekind finite' more like `not Dedekind infinite', whereas the negation of Dedekind's second defition now gives the concept of infinite set. 
-And the notion of `finite set' according to this new definition do line up with the classical definitions, as follows.
-
-
-% Place the orcid_logo.png file in the document directory for the ORCID icon below.
-The following argument is based on one communicated to me by Jason Carr~\orcidlink{0009-0000-7254-9607}, using the following rephrasing of Dedekind's definition: A set $S$ is \emph{D2-finite} if there is an endomorphism $f$ of $S$ such that if $U\subseteq S$ is stable under $f$, and $\exists x \in U$, then $U=S$. 
-It's clear that any set that is in bijection with $\underline{k}:=\{1,\ldots k\}$ (i.e. a classically finite set) satisfies this definition, because we can take $f$ to be $n\mapsto n+1\pmod{k}$. But we can also show that D2-finiteness of $S$ implies $S$ is classically finite.
-
-An empty set is both D2-finite and classically finite, so we only consider the case that the set $S$ has a specified element.
-
-Given any subset $U_0\ni x$ (say) of $S$ and endomorphism $f$, we can take the union over the sequence $U_{i+1}:=f(U_i)$ of subsets of $S$, to get $U\subseteq S$, which contains $x$. 
-We have that $f$ restricts to an endomorphism of $U$, so then $U=S$. 
-But $U_0$ was arbitrary, so we could take it to be $U_0=\{x\}$ for some $x\in S$, and then for every $y\in S$, there exists some $n \geq 0$ such that $y=f^n(x)$ ($f^n = f\circ \cdots \circ f$, $n$ times). 
-As a result, the function $c\colon \mathbb{N}\to S$, $c(i) = f^i(x)$ and $c(0)=x$ is surjective.
-Now consider $U_0 = \{c(1)\}$, so that there exists some $m$ such that $x=f^m(c(1)) = f^{m+1}(x)$.
-Thus $c$ factors through the quotient map $\mathbb{N}\twoheadrightarrow \underline{m+1}$, to give a surjection $c'\colon \underline{m+1}\to S$, making $S$ the quotient of a classically finite set, what is called `K-finite' in the constructive mathematics literature. 
-Such a set is classically finite in classical logic, but we can observe that the above proof is actually constructively valid. 
-Thus even in constructive mathematics an inhabited D2-finite set is (inhabited and) K-finite.
-
-
-Choice-sensitive readers will notice that the Axiom of Choice was not used in the argument, as is highlighted by Noether in her commentary, so that a `Dedekind-style' definition of finiteness can be used in place of the classical definition, without, as Dedekind says ``without recourse to the natural numbers.''
-
-
-
-Acknowledgements are due to Peter Luschny for building the two-column bilingual document structure and also helping finesse the translation after I made a first pass on rendering the software-translated English to something minimally acceptable.
-I thank Jason Carr for discussion about the equivalence between Dedekind's definition and existing definitions.
-
-\bigskip
-
-% Right align this!
----David Michael Roberts, Adelaide, 2025 
-
-\bibliographystyle{alpha} 
-\bibliography{refs}
-
-\newpage
+% \newpage
 \newgeometry{total={8in,10in}}
 
-\title{Zweite Definition (1889.3.9) des Endlichen und Unendlichen.}
+\title{Zweite Definition (1889.3.9) des Endlichen und Unendlichen.\\
+{\normalsize Second definition (1889.3.9) of the finite and infinite}}
+\author{Richard Dedekind}
+\date{}
 
 \maketitle
 
@@ -579,7 +511,7 @@ no proper part of $S$ is mapped into itself; in the opposite case, $S$ is called
 an infinite system.
 \end{quote}
 
-Pursuit of this definition of a finite system $S$ \emph{without recourse to the natural numbers}.
+Now to pursue this definition of a finite system $S$ \emph{without recourse to the natural numbers}.
 
 Let $\varphi$ be a mapping of $S$ into itself, which maps no proper part of $S$
 into itself. Small Latin letters $a, b \ldots z$ always mean \emph{elements} of
@@ -630,7 +562,7 @@ satisfies the following two conditions:
 	[s] + H_s = H_s.
 \]
 \item If $h$ is an element of $H_s$ different from $s$, then $h'$ is also an
-element of $H_s$. So if $H \partof H_s$, but $s$ is \emph{not contained} in H,
+element of $H_s$. So if $H \partof H_s$, but $s$ is \emph{not contained} in $H$,
 then $H' \partof H_s$.
 \end{enumerate}
 \end{deff}
@@ -654,7 +586,7 @@ If $H_s$ is a \emph{proper} part of $S$, then $s'$ is the only element of
 $H'_s$ that lies outside $H_s$.
 \Beweis
 This is because every element $k$ of $H'_s$ is the image $h'$ of at least one
-element $h$ in $H$. If $k=h'$ is different from $s'$, then $h$ is also different
+element $h$ in $H_s$. If $k=h'$ is different from $s'$, then $h$ is also different
 from $s$, and consequently (by \sref{gdef3}.II) $k = h'$ lies in
 $H_s$, while the element $s'$ of $H'_s$ by \sref{thm5} lies outside $H_s$.
 \end{satz}
@@ -1016,7 +948,7 @@ in $hs$ liegt, woraus $m's \TeilVon hs$ folgt.
 [\emph{Der Beweis ist offenbar unvollständig. Ein Beweis des Hilfssatzes ergibt
 sich nach Mitteilung von J. Cavaillès direkt aus \sref{gthm25}, indem man die
 dortigen $a$, $b$, $c$ durch $a$, $k$, $s$ ersetzt.
-Der Zusatz folgt aus \sref{gthm28} und dem Hilfssatz. E. N.
+Der Zusatz folgt aus \sref{gthm28} und dem Hilfssatz. E.~N.
 }] \end{quote}
 
 \begin{satz}\label{gthm29}
@@ -1065,7 +997,7 @@ hat auch die Eigenschaft 4.
 \noindent \textbf{30.}\label{gthm30} \emph{Abbildung von $S$ nach $T$.}
 Durch \sref{gthm29} ist eine Abbildung $\psi$ von $S$ in $T$ hergestellt, welche
 dadurch definiert wird, dass jedes Element $s$ von $S$ durch $\psi$ in das dort
-erklärte, (nach \sref{gdef3}) in $T$ liegende Element $s_1$ übergeht. Ist dann
+erklärte, (nach 3) in $T$ liegende Element $s_1$ übergeht. Ist dann
 $A$ irgend ein Teil von $S$, so soll $A_1$ das zugehörige Bild von $A$ (d. h.
 das System der Bilder aller Elemente $a_1$ von $A$) bedeuten. Es ist also
 $S_1 \TeilVon T$, also auch $T_1 \TeilVon T$, d. h. $T$ wird durch $\psi$ in sich
@@ -1298,8 +1230,7 @@ To prove it, we first provide the following Lemma:
 If $hs$ is a proper part of $as$, and $k$ is the element whose image is $k'=h$,
 then $hs$ is also a proper part of $ks$, and at the same time $ks \partof as$.
 \Beweis
-If $k=s$, then $hs=s's= S$, while $hs$ is a proper part of $as$, and therefore
-also of $S$. Since $k$ is different from $s$, then (by \sref{thm18}) $ks = [k]+ hs$,
+If $k=s$, then $hs=s's= S$, whereas $hs$ is a proper part of $as$, and hence also of $S$. Since $k$ is different from $s$, then (by \sref{thm18}) $ks = [k]+ hs$,
 and (according to \sref{thm19}) $k$ is not contained in $hs$, so $hs$ is a proper
 part of $ks$. Since $hs$ is a proper part of $as$, let $as = M + hs$, where $M$
 is the system of all elements $m$ of $as$ that lie outside $hs$ and are therefore
@@ -1314,7 +1245,7 @@ $m's \partof hs$ follows.
 the Lemma results directly from \sref{thm25} by replacing the $a$, $b$, $c$ there
 by $a$, $k$, $s$. The Corollary follows from \sref{thm28} and the Lemma.
 \ \\
-E. N.
+E.~N.
 }]\end{quote}
 
 
@@ -1364,7 +1295,7 @@ according to 2.\ also outside $T'$, i.e., $s_1$ also has property 4.
 \noindent \textbf{30.}\label{thm30} \hspace{-9pt} \emph{Mapping of $S$ into $T$}.
 Through \sref{thm29} a mapping $\psi$ of $S$ into $T$ is
 created, which is defined by the fact that each element $s$ of $S$ is sent by
-$\psi$ into the element $s_1$, which is defined there and (according to \sref{def3})
+$\psi$ into the element $s_1$, which is defined there and (according to \sref{thm29}.3)
 lies in $T$. If $A$ is then any part of $S$, then $A_1$ should mean the associated
 image of $A$ (i.e., the system of images $a_1$ of all elements $a$ of $A$). So
 $S_1 \partof T$, also $T_1 \partof T$, i.e. $T$ is mapped by $\psi$ into itself.
@@ -1422,7 +1353,7 @@ of choice. Dedekind believed -- in the preface to the 2nd edition of
 of the definitions required the full theory developed there.
 \
 
-\smallskip
+% \smallskip
 
 How he thought about the transition in detail is shown in the following passage
 from a letter to H. Weber:
@@ -1449,7 +1380,7 @@ no proper part of $S$ is mapped into itself. I denote the image of an element $a
 or a part $A$ of $S$ with $a\phi$ or $A\phi$ (much more natural than $\phi(a)$
 or $\phi(A)$). If $a$ is any element of $S$, then all the images are elements of
 $S$, thus the system $A$ of all these images is also a part of $S$,
-\vspace{16pt}
+\vspace{10pt}
 \[
 	a\phi, a\phi^2= (a\phi)\phi \ldots, a\phi^{n+1} = (a\phi^n)\phi \ldots
 \]
@@ -1485,7 +1416,7 @@ although $1<r+n-s<n$.
 Finally, the fact that $S$ contains no elements other than these follows from
 $a\phi^{m + n} = a\phi^m$. So $S$ is really a finite system (in the usual sense),
 and at the same time it follows that $\phi$ is a cyclic permutation of the $n$
-elements of $S$, so it is also a similar (i.e. clearly revertible) mapping.
+elements of $S$, so it is also a similar (i.e. clearly revertible) mapping. \\
 
 \hspace{12pt} Conversely, a finite (in the usual sense) system $S$ consists of
 $n$ different elements
@@ -1500,13 +1431,120 @@ for $1\leq r<n$, then $S' = S$, so $\phi$ is a mapping from $S$ into itself, and
 one easily shows that no proper part of $S$ is mapped into itself. Because if
 a part $A$ of $S$ is mapped by $\phi$ into itself and contains an element $a$,
 then $A$ must also contain all elements $a\phi, a\phi^2, a\phi^3, \ldots \ $, i.e.,
-all elements of $S$, and therefore be $= S$. Qed.''
+all elements of $S$, and therefore be $= S$. Qed.''\footnote{[\emph{cf Brief an Weber 11 Jan. 1906. \cite[p.299]{Dedekind-Weber-letters}.
+The passage quoted by Noether is a splicing together of a part of the letter in \emph{ibid}.\ and the notes that Dedekind included (``I am enclosing a sheet with comments'') for Weber to use to improve his manuscript ``Elementare Mengenlehre. Natürliche Zahlen''}.
+]}
 \end{quote}
+
 \begin{flushright}\textbf{Noether.}\end{flushright}
 
+
+
 \end{rightcolumn}
+
+
+
 \end{paracol}
 % restore default margins for subsequent single‐column pages
+
+
+\newpage
+
 \restoregeometry
+
+\begin{center}{\Large\textbf{Commentary (VERY ROUGH DRAFT: IGNORE FOR NOW)\ \\ }}
+\end{center}
+
+
+\justifying
+
+
+
+Dedekind's famous definition of a set being finite appears in \S 64 of \emph{Was sind und was sollen die Zahlen} (\cite{WZ}, henceforth WZ), published in 1888. 
+But his \emph{second} definition, dating to 1889, was only published as an aside in the foreword to the 1893 second edition of WZ as a potential alternative:\footnote{I quote here from Beman's 1901 `authorised translation' of WZ.}
+
+\begin{quote}
+ For the benefit of those who are interested in and understand the difficulties of such an investigation, I add the following remark. We can lay down an entirely different definition of the finite and infinite, which appears still simpler since the notion of similarity of transformation [i.e.\ injectivity of a function] is not even assumed, viz.:
+ \begin{quote}
+ ``A system S is said to be finite when it may be so transformed in itself (36) that no proper part (6) of S is transformed in itself; in the contrary case S is called an infinite system.''
+ \end{quote}
+ Now let us attempt to erect our edifice upon this new foundation! 
+ We shall soon meet with serious difficulties, and I believe myself warranted in saying that the proof of the perfect agreement of this definition with the former can be obtained only (and then easily) when we are permitted to assume the series of natural numbers as already developed and to make use of the final considerations in (131); and yet nothing is said of all these things in either the one definition or the other! 
+ From this we can see how very great is the number of steps in thought needed for such a remodeling of a definition.
+\end{quote}
+
+Dedekind subsequently developed the consequences of his definition; the manuscript %https://mathstodon.xyz/@estruppi@sciences.re/112195178889922135) 
+refers to the 1893 edition of WZ in its first sentence. 
+It may well be he was hoping to work up a version for publication, but things never panned out, and it seems the facts of the matter are unknown.
+At the very least, the development of the results is incomplete, with the proof of the Lemma after Theorem 28 missing the conclusion of the argument, and the logical next step of the theory after Theorem 31---that the subset $T$ satisfies the new definition of `finite'---is not covered.  
+Emmy-Lou Haffner~\orcidlink{0000-0003-3210-9804} has told me she does not think the manuscript was at the stage of being prepared for publication.
+
+Even in the 1911 third edition Dedekind makes no edits to the text, adding only another small preface acknowledging criticism of his non-mathematical `proof' of WZ's Theorem 66, defending the `inner harmony' of the logic of his monograph, and asking the reader's indulgence for not having made updates including a `rigorous examination of the creative power of the mind' due to other work. 
+So this second definition of finite set lay fallow for a couple of decades, as far as the public knew. 
+However Dedekind had in fact worked out, as far as his naive set theory framework allowed, the relationship between his second definition of finite set, and the notion of finiteness that is ``of cardinality a natural number'', and communicated this to Weber in 1906 [DETAILS?]
+
+% The ``entirely different definition of the finite and the infinite'' is the subject of the notes translated here, which to my knowledge have only appeared in Dedekind's collected works \cite[Vol.~3, page~450]{Dedekind_Werke} edited by Robert Fricke, Emmy Noether and \O ystein Ore, in the original German. 
+
+The note is followed by a short editorial commentary by Emmy Noether, and she cites the then-forthcoming note \cite{Cavailes_32} by Jean Cavaill\`es that fills in a gap in Dedekind's proof of the Lemma for Theorem 28.\footnote{Noether and Cavaill\`es would go on to co-edit the Cantor--Dedekind correspondence, published after Noether's unexpectedly early death.} 
+The proof of the Lemma as written doesn't establish the claim $ks\subseteq as$, as Dedekind doesn't \ldots \\
+Noether also includes quote from a letter Dedekind wrote to Weber on the matter.
+
+Reference Tarski's paper \cite[\S 7]{Tarski_finite} (`De l'ordre cyclique. La seconde d\'efinition de Dedekind et la d\'efinition de M.\ Zermelo')
+
+Noether's quoting Dedekind does not match the extant draft of the letter in R. Dedekind MS, published as \cite[p.\ 299]{Dedekind-Weber-letters}. The 
+
+
+Orbitals cf work of B\'enabou--Loiseau \cite{Benabou-Loiseau_94}, Mike Shulman's comments on Zulip etc (Freyd? \cite{Freyd_06})
+
+
+The review of Cavaillès' paper https://zbmath.org/0005.39002 tells us what he proved about this second definition of Dedekind: that a subset of a finite set is finite, that the successor of a finite set is finite, that induction holds for this definition of finite, and that the powerset of a finite set is finite.
+
+
+%%%%%%
+\bigskip
+
+Dedekind's note translated here was published in \cite[\S LXIII.]{Dedekind_Werke}, and included a pointer to \cite{Cavailes_32}, which filled a small gap in one of the proofs (the Lemma for the Corollary to Theorem 28), as well as providing the theorem that induction works as expected.
+
+An interesting point to observe, aside from Dedekind's noting that the concept of injective mapping is not needed, is that this definition of finiteness is a \emph{positive} one: $\exists f$ such that [a certain property holds]. 
+To be fair, the explicit statement given by Dedekind has a `no proper part' condition, but the condition can be rephrased as ``if $U\subseteq S$ is stable under $f$, then $\exists x\in U \Rightarrow U=S$'' (see below).
+In contrast the more famous Dedekind finiteness is a \emph{negative} one ($\not\exists f$ such that [a certain property holds]) making the definition of `Dedekind finite' more like `not Dedekind infinite', whereas the negation of Dedekind's second definition now gives the concept of infinite set. 
+And the notion of `finite set' according to this new definition does line up with the classical definitions, as follows.
+
+
+% Place the orcid_logo.png file in the document directory for the ORCID icon below.
+The following argument is based on one communicated to me by Jason Carr~\orcidlink{0009-0000-7254-9607}, using the following rephrasing of Dedekind's definition: Call a set $S$ \emph{D2-finite} if there is an endomorphism $f$ of $S$ such that if $U\subseteq S$ is stable under $f$, and $\exists x \in U$, then $U=S$. 
+It's clear that any set that is in bijection with $\underline{k}:=\{1,\ldots k\}$ (i.e. a classically finite set) satisfies this definition, because we can take $f$ to be $n\mapsto n+1\pmod{k}$. But we can also show that D2-finiteness of $S$ implies $S$ is classically finite.
+
+An empty set is both D2-finite and classically finite, so we only consider the case that the set $S$ has a specified element $x$. 
+Dedekind in any case only considered inhabited sets.
+
+
+Given any subset $U_0\ni x$ (say) of $S$ and endomorphism $f$, we can take the union over the sequence $U_{i+1}:=f(U_i)$ of subsets of $S$, to get $U\subseteq S$, which contains $x$. 
+We have that $f$ restricts to an endomorphism of $U$, so then $U=S$. 
+But $U_0$ was arbitrary, so we could take it to be $U_0=\{x\}$ for some $x\in S$, and then for every $y\in S$, there exists some $n \geq 0$ such that $y=f^n(x)$ ($f^n = f\circ \cdots \circ f$, $n$ times). 
+As a result, the function $c\colon \mathbb{N}\to S$, $c(i) = f^i(x)$ and $c(0)=x$ is surjective.
+Now consider $U_0 = \{c(1)\}$, so that there exists some $m$ such that $x=f^m(c(1)) = f^{m+1}(x)$.
+Thus $c$ factors through the quotient map $\mathbb{N}\twoheadrightarrow \underline{m+1}$, to give a surjection $c'\colon \underline{m+1}\twoheadrightarrow S$, making $S$ the quotient of a classically finite set, what is called \emph{K-finite} or \emph{subfinite} in the constructive mathematics literature. 
+Such a set is classically finite in classical logic, but we can observe that the above proof is actually constructively valid. 
+Thus even in constructive mathematics an inhabited D2-finite set is (inhabited and) K-finite.
+
+
+Choice-sensitive readers will notice that the Axiom of Choice was not used in the argument, as is highlighted by Noether in her commentary. 
+Thus, unlike the usual notion of Dedekind finiteness, we have here a Choice-free `Dedekind-style' definition of finiteness that can be used in place of the classical definition, without, as Dedekind says ``recourse to the natural numbers''.
+
+
+
+\textbf{Acknowledgements} are due to Peter Luschny~\orcidlink{0000-0001-6245-708X} for building the two-column bilingual document structure and also helping finesse the translation after I made a first pass on rendering the software-translated English to something minimally acceptable.
+I thank Jason Carr for discussion about the equivalence between Dedekind's definition and existing definitions, and Emmylou Haffner for additional information, including about Dedekind's 1906 letter and notes sent to Weber.
+
+We thank the American Mathematical Society for granting permission to reproduce Emmy Noether’s original commentary on the chapter titled ``\emph{Zweite Definition (1889.3.9) des Endlichen und Unendlichen.}'' This material was originally published in `Gesammelte mathematische Werke, Volume II', edited by Robert Fricke, Emmy Noether, and \O ystein Ore, and reprinted by Chelsea Publishing Company, New York, in the 1969 edition. We are grateful for the AMS’s support in making this historically significant text more accessible.
+
+\bigskip
+
+% Right align this!
+---David Michael Roberts, Adelaide, 2025 
+
+\bibliographystyle{alpha} 
+\bibliography{refs}
 
 \end{document}
