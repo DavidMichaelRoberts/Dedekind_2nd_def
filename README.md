@@ -33,5 +33,6 @@ The note is followed by a short editorial commentary by Noether, and she cites t
 
 I have used machine translation to give a first-pass translation of this text to English (which is, understandably, extremely rough and in places tortured), and made some small obvious edits (Satz > Theorem, and not "sentence", and so on). I hope to gradually improve this and also to do a careful proof-reading of the transcription of the mathematics, so **all comments on various choices of wording are greatly appreciated.** There is an OCRed Public Domain copy of Dedekind's text in this repository for reference, but there are understandably errors in text recognition, in particular I have noticed some letters used for mathematical symbols either missed or coded incorrectly (eg S > Ä, or just missed altogether).
 
-
+ **Acknowledgment**
+I thank the American Mathematical Society for granting permission to reproduce Emmy Noether’s original commentary on the chapter titled "_Zweite Definition (1889.3.9) des Endlichen und Unendlichen_." This material was originally published in Gesammelte mathematische Werke, Volume II, edited by Robert Fricke, Emmy Noether, and Øystein Ore, and reprinted by Chelsea Publishing Company, New York, in the 1969 edition. I am grateful for the AMS’s support in making this historically significant text more accessible.
 
